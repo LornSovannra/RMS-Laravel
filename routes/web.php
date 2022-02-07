@@ -9,5 +9,8 @@ Auth::routes();
 Route::get('/', [HomeController::class, "index"]) -> name("dashboard");
 
 Route::get("/employee", [HomeController::class, "EmployeeHome"]) -> name("employee_home");
+Route::get("/search-employee", [HomeController::class, "EmployeeHome"]) -> name("search_employee");
 Route::post("/employee", [EmployeeController::class, "Create"]) -> name("create_employee");
+Route::get("/edit-employee/{id}", [EmployeeController::class, "Edit"]) -> name("edit_employee");
+Route::post("/update-employee", [EmployeeController::class, "Update"]) -> name("update_employee");
 Route::post("/delete-employee/{id}", [EmployeeController::class, "Delete"]) -> name("delete_employee");

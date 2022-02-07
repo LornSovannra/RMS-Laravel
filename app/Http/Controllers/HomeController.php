@@ -13,20 +13,35 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::simplePaginate(10);
         $authID = Auth::id();
         $auth = User::find($authID);
 
-        return view('welcome', compact("users", "auth"));
+        if(empty($request -> all())){
+            $users = User::simplePaginate(1);
+    
+            return view('welcome', compact("users", "auth"));
+        }else{
+            $users = User::where("name", "LIKE", "%" . $request->search . "%")->orWhere("email", "LIKE", "%" . $request->search . "%")->paginate(1);
+            $users->appends($request->all());
+            return view('welcome', compact("users", "auth"));
+        }
     }
 
-    public function EmployeeHome(){
-        $users = User::simplePaginate(10);
+    public function EmployeeHome(Request $request){
         $authID = Auth::id();
         $auth = User::find($authID);
 
-        return view("pages.employee", compact("users", "auth"));
+        if(empty($request->all())){
+            $users = User::simplePaginate(10);
+
+            return view("pages.employee", compact("users", "auth"));
+        }else{
+            $users = User::where("name", "LIKE", "%" . $request->search_employee . "%")->orWhere("email", "LIKE", "%" . $request->search_employee . "%")->simplePaginate(2);
+            $users->appends($request->all());
+
+            return view('pages.employee', compact("users", "auth"));
+        }
     }
 }
