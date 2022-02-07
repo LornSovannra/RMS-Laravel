@@ -45,7 +45,7 @@
 
         <main style="display: grid; grid-template-columns: 300px auto; margin: 30px; gap: 30px;">
           @include('layouts.navigation')
-          @include('page_modules.dashboard')
+          @include('page_modules.employee')
         </main>
     </body>
 </html>

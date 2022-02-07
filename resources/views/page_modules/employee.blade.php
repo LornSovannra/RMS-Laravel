@@ -1,14 +1,94 @@
-@extends('layouts.app')
+<section>
+    <div class="overflow-hidden" style="background: white; border-radius: 10px; padding: 20px;">
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div {{-- class="d-flex justify-content-between" --}} style="display: flex; align-items: center; justify-content: space-between;">
+            <h1>Employee</h1>
+
+            <!-- Button trigger modal -->
+            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" style="border: 1px solid green; border-radius: 10px; color: green; padding: 5px 10px; background: transparent; ">
+                Create New Employee
+            </button>
+        </div>
+
+        <div style="display: flex; align-items: center; margin-top: 40px; padding: 5px 10px; border-radius: 10px; border: 1px solid green; border-radius: 10px;">
+            <i class="fas fa-search" style="margin-right: 10px;"></i>
+            <input type="text" placeholder="Search Employee" style="width: 100%; border: none; outline: none;">
+        </div>
+    
+        <div style="overflow-y: hidden; margin-top: 20px;">
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">User Type</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Company</th>
+                    <th scope="col">Job Title</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Home Phone</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">City</th>
+                    <th scope="col">State/Province</th>
+                    <th scope="col">Zip/Postal Code</th>
+                    <th scope="col">Country/Region</th>
+                    <th scope="col">Photo</th>
+                    <th scope="col">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    @foreach ($users as $user)    
+                        <tr>
+                          <th scope="row">{{ $user->id }}</th>
+                          <td>{{ $user->name }}</td>
+                          <td>{{ $user->email }}</td>
+                          <td>{{ $user->user_type }}</td>
+                          <td>{{ $user->role }}</td>
+                          <td>{{ $user->company }}</td>
+                          <td>{{ $user->job_title }}</td>
+                          <td>{{ $user->phone }}</td>
+                          <td>{{ $user->home_phone }}</td>
+                          <td>{{ $user->address }}</td>
+                          <td>{{ $user->city }}</td>
+                          <td>{{ $user->state_province }}</td>
+                          <td>{{ $user->zip_postal_code }}</td>
+                          <td>{{ $user->country_region }}</td>
+                          <td>
+                              <img class="rounded-circle" style="width: 70px; height: 70px;" src="user_photos/{{ $user->photo }}" alt="{{ $user->photo }}">
+                          </td>
+                          <td >
+                            <div class="d-flex gap-2">
+                              <button class="btn btn-primary">View</button>
+                              <button class="btn btn-secondary">Edit</button>
+                              <form action="{{ route("delete_employee", $user->id) }}" method="post">
+                                    @csrf
+                                    <button class="btn btn-warning">Delete</button>
+                              </form>
+                            </div>
+                          </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+              </table>
+              {{ $users->links() }}
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Employee</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
             <div class="card">
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('create_employee') }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="row mb-3">
@@ -46,6 +126,7 @@
                             <div class="col-md-6">
                                 <select id="user_type" class="form-select @error('user_type') is-invalid @enderror" name="user_type" value="{{ old('user_type') }}" required autocomplete="user_type" autofocus>
                                     <option selected disabled>Select User Type</option>
+                                    <option value="Admin">Admin</option>
                                     <option value="User">User</option>
                                 </select>
 
@@ -247,16 +328,25 @@
                         </div>
 
                         <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
+                            {{-- <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>
-                            </div>
+                            </div> --}}
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Create</button>
+                              </div>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
+        {{-- <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div> --}}
+      </div>
     </div>
-</div>
-@endsection
+  </div>
+</section>

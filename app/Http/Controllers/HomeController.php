@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -14,8 +15,18 @@ class HomeController extends Controller
 
     public function index()
     {
-        $users = User::simplePaginate(1);
+        $users = User::simplePaginate(10);
+        $authID = Auth::id();
+        $auth = User::find($authID);
 
-        return view('welcome', compact("users"));
+        return view('welcome', compact("users", "auth"));
+    }
+
+    public function EmployeeHome(){
+        $users = User::simplePaginate(10);
+        $authID = Auth::id();
+        $auth = User::find($authID);
+
+        return view("pages.employee", compact("users", "auth"));
     }
 }
