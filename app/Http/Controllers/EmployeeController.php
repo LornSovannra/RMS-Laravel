@@ -40,6 +40,15 @@ class EmployeeController extends Controller
         return back();
     }
 
+    public function View($id){
+        $user = User::findOrFail($id);
+
+        return response()->json([
+            'status'=>200,
+            'user'=>$user
+        ]);
+    }
+
     public function Edit($id){
         $user = User::findOrFail($id);
 
@@ -79,8 +88,17 @@ class EmployeeController extends Controller
         return back();
     }
 
-    public function Delete($id){
+    public function Remove($id){
         $user = User::findOrFail($id);
+
+        return response()->json([
+            'status'=>200,
+            'user'=>$user
+        ]);
+    }
+
+    public function Delete(Request $req){
+        $user = User::findOrFail($req->remove_id);
         $user -> delete();
 
         return back();

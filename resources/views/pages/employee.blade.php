@@ -51,11 +51,37 @@
 
         <script>
           $(document).ready(function(){
-            $('.show_remove_confirm').click(function(e) {
-                if(!confirm('Are you sure you want to delete this?')) {
-                    e.preventDefault();
+
+            $(document).on("click", ".view_btn", function(){
+              var user_id = $(this).val()
+
+              $("#viewModal").modal('show')
+
+              $.ajax({
+                type: "GET",
+                url: "/view-employee/" + user_id,
+                success: function(res){
+                  /* alert(res.user.photo) */
+                  $("#view_name").val(res.user.name)
+                  $("#view_email").val(res.user.email)
+                  $("#view_user_type").val(res.user.user_type)
+                  $("#view_role").val(res.user.role)
+                  $("#view_company").val(res.user.company)
+                  $("#view_job_title").val(res.user.job_title)
+                  $("#view_phone").val(res.user.phone)
+                  $("#view_home_phone").val(res.user.home_phone)
+                  $("#view_address").val(res.user.address)
+                  $("#view_city").val(res.user.city)
+                  $("#view_state_province").val(res.user.state_province)
+                  $("#view_zip_postal_code").val(res.user.zip_postal_code)
+                  $("#view_country_region").val(res.user.country_region)
+
+                  /* var img = $("<img style='width: 100px;' id='view_photo'>")
+                  img.append("src", 'user_photos/' + res.user.photo) */
+                  $("#view_photo").attr("src", 'user_photos/' + res.user.photo)
                 }
-            });
+              })
+            })
   
             $(document).on("click", ".edit_btn", function(){
               var user_id = $(this).val()
@@ -80,6 +106,20 @@
                   $("#zip_postal_code").val(res.user.zip_postal_code)
                   $("#country_region").val(res.user.country_region)
                   $("#id").val(res.user.id)
+                }
+              })
+            })
+
+            $(document).on("click", ".delete_btn", function(){
+              var user_id = $(this).val()
+
+              $("#deleteModal").modal('show')
+
+              $.ajax({
+                type: "GET",
+                url: "/remove-employee/" + user_id,
+                success: function(res){
+                  $("#remove_id").val(res.user.id)
                 }
               })
             })

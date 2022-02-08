@@ -43,43 +43,52 @@
                 <tbody>
                     @foreach ($users as $user)    
                         <tr>
-                          <th scope="row">{{ $user->id }}</th>
-                          <td>{{ $user->name }}</td>
-                          <td>{{ $user->email }}</td>
-                          <td>{{ $user->user_type }}</td>
-                          <td>{{ $user->role }}</td>
-                          <td>{{ $user->company }}</td>
-                          <td>{{ $user->job_title }}</td>
-                          <td>{{ $user->phone }}</td>
-                          <td>{{ $user->home_phone }}</td>
-                          <td>{{ $user->address }}</td>
-                          <td>{{ $user->city }}</td>
-                          <td>{{ $user->state_province }}</td>
-                          <td>{{ $user->zip_postal_code }}</td>
-                          <td>{{ $user->country_region }}</td>
+                          <th scope="row" class="align-middle">{{ $user->id }}</th>
+                          <td class="align-middle">{{ $user->name }}</td>
+                          <td class="align-middle">{{ $user->email }}</td>
+                          <td class="align-middle">{{ $user->user_type }}</td>
+                          <td class="align-middle">{{ $user->role }}</td>
+                          <td class="align-middle">{{ $user->company }}</td>
+                          <td class="align-middle">{{ $user->job_title }}</td>
+                          <td class="align-middle">{{ $user->phone }}</td>
+                          <td class="align-middle">{{ $user->home_phone }}</td>
+                          <td class="align-middle">{{ $user->address }}</td>
+                          <td class="align-middle">{{ $user->city }}</td>
+                          <td class="align-middle">{{ $user->state_province }}</td>
+                          <td class="align-middle">{{ $user->zip_postal_code }}</td>
+                          <td class="align-middle">{{ $user->country_region }}</td>
                           <td>
                               <img class="rounded-circle" style="width: 70px; height: 70px; object-fit: cover;" src="user_photos/{{ $user->photo }}" alt="{{ $user->photo }}">
                           </td>
-                          <td >
+                          <td class="align-middle">
                             <div class="d-flex gap-2">
-                              <button style="border: none; background: transparent;"><i class="far fa-eye" style="font-size: 20px;"></i></button>
+                              <button value="{{ $user->id }}" class="view_btn" style="border: none; background: transparent;"><i class="far fa-eye" style="font-size: 20px;"></i></button>
                               <button value="{{ $user->id }}" class="edit_btn" style="border: none; background: transparent;"><i class="fas fa-pencil-alt" style="font-size: 20px;"></i></button>
-                              <form action="{{ route("delete_employee", $user->id) }}" method="post">
+                              <button value="{{ $user->id }}" class="delete_btn" style="border: none; background: transparent;"><i class="far fa-trash-alt" style="font-size: 20px;"></i></button>
+                              {{-- <form action="{{ route("delete_employee", $user->id) }}" method="post">
                                     @csrf
                                     <button class="show_remove_confirm" style="border: none; background: transparent;"><i class="far fa-trash-alt" style="font-size: 20px;"></i></button>
-                              </form>
+                              </form> --}}
                             </div>
                           </td>
+                          {{-- Edit Modal --}}
                           @include('modals.edit_employee')
                         </tr>
+                        {{-- Delete Modal --}}
+                        @include('modals.delete_employee')
                     @endforeach
                 </tbody>
               </table>
               {{ $users->links() }}
         </div>
     </div>
-
-    {{-- Create Employee Modal --}}
-    @include('modals.create_employee')
+    <div>
+      {{-- View Modal --}}
+      @include('modals.view_employee')
+    </div>
+    <div>
+      {{-- Create Employee Modal --}}
+      @include('modals.create_employee')
+    </div>
   </div>
 </section>
