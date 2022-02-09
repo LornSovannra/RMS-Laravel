@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Employee</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Order Detail</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -35,9 +35,6 @@
                         <label for="user_type" class="col-md-4 col-form-label text-md-end">{{ __('User Type') }}</label>
 
                         <div class="col-md-6">
-                            {{-- <select id="view_user_type" class="form-select">
-                                <option selected disabled>Select User Type</option>
-                            </select> --}}
                             <input disabled id="view_user_type" type="text" class="form-control">
                         </div>
                     </div>
@@ -86,9 +83,6 @@
                         <label for="address" class="col-md-4 col-form-label text-md-end">{{ __('Address') }}</label>
 
                         <div class="col-md-6">
-                            {{-- <select id="view_address" class="form-select">
-                                <option selected disabled>Select User Type</option>
-                            </select> --}}
                             <input disabled id="view_address" type="text" class="form-control">
                         </div>
                     </div>
@@ -97,9 +91,6 @@
                         <label for="city" class="col-md-4 col-form-label text-md-end">{{ __('City') }}</label>
 
                         <div class="col-md-6">
-                            {{-- <select id="view_city" class="form-select">
-                                <option selected disabled>Select User Type</option>
-                            </select> --}}
                             <input disabled id="view_city" type="text" class="form-control">
                         </div>
                     </div>
@@ -109,9 +100,6 @@
 
                         <div class="col-md-6">
                             <input disabled id="view_state_province" type="text" class="form-control">
-                            {{-- <select id="view_state_province" class="form-select">
-                                <option selected disabled>Select User Type</option>
-                            </select> --}}
                         </div>
                     </div>
 
@@ -131,18 +119,9 @@
                         </div>
                     </div>
 
-                    {{-- <div class="row mb-3">
-                        <label for="photo" class="col-md-4 col-form-label text-md-end">{{ __('Photo') }}</label>
-
-                        <div class="col-md-6">
-                            <input id="photo" type="file" class="form-control @error('photo') is-invalid @enderror" name="photo" value="{{ old('photo') }}" autocomplete="photo" autofocus>
-                        </div>
-                    </div> --}}
-
                     <div class="row mb-0">
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            {{-- <button type="submit" class="btn btn-primary">Update</button> --}}
                         </div>
                     </div>
                 </div>

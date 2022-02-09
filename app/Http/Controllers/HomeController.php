@@ -28,20 +28,4 @@ class HomeController extends Controller
             return view('welcome', compact("users", "auth"));
         }
     }
-
-    public function EmployeeHome(Request $request){
-        $authID = Auth::id();
-        $auth = User::find($authID);
-
-        if(empty($request->all())){
-            $users = User::simplePaginate(10);
-
-            return view("pages.employee", compact("users", "auth"));
-        }else{
-            $users = User::where("name", "LIKE", "%" . $request->search_employee . "%")->orWhere("email", "LIKE", "%" . $request->search_employee . "%")->simplePaginate(2);
-            $users->appends($request->all());
-
-            return view('pages.employee', compact("users", "auth"));
-        }
-    }
 }

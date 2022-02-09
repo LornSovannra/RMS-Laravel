@@ -21,7 +21,7 @@
 
         <main style="display: grid; grid-template-columns: 300px auto; margin: 30px; gap: 30px;">
           @include('layouts.navigation')
-          @include('page_modules.employee')
+          @include('page_modules.category')
         </main>
 
         <script>

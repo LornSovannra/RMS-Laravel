@@ -1,19 +1,20 @@
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Employee</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Order Detail</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+                <div class="card-header">{{ __('Update') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('create_employee') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{-- {{ route('update_employee') }} --}}" enctype="multipart/form-data">
                         @csrf
 
+                        <input type="hidden" name="id" id="id">
                         <div class="row mb-3">
                             <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
 
@@ -136,7 +137,7 @@
                             <label for="address" class="col-md-4 col-form-label text-md-end">{{ __('Address') }}</label>
 
                             <div class="col-md-6">
-                                <select it="address" class="form-select @error('address') is-invalid @enderror" aria-label="Default select example" name="address" value="{{ old('address') }}" required autocomplete="address" autofocus>
+                                <select id="address" class="form-select @error('address') is-invalid @enderror" aria-label="Default select example" name="address" value="{{ old('address') }}" required autocomplete="address" autofocus>
                                     <option selected disabled>Select User Type</option>
                                     <option value="Siem Reap">Siem Reap</option>
                                     <option value="Phnom Penh">Phnom Penh</option>
@@ -154,7 +155,7 @@
                             <label for="city" class="col-md-4 col-form-label text-md-end">{{ __('City') }}</label>
 
                             <div class="col-md-6">
-                                <select class="form-select @error('city') is-invalid @enderror" aria-label="Default select example" name="city" value="{{ old('city') }}" required autocomplete="userType" autofocus>
+                                <select id="city" class="form-select @error('city') is-invalid @enderror" aria-label="Default select example" name="city" value="{{ old('city') }}" required autocomplete="userType" autofocus>
                                     <option selected disabled>Select User Type</option>
                                     <option value="Siem Reap">Siem Reap</option>
                                     <option value="Phnom Penh">Phnom Penh</option>
@@ -228,46 +229,15 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
                         <div class="row mb-0">
-                            {{-- <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div> --}}
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary">Create</button>
+                                <button type="submit" class="btn btn-primary">Update</button>
                               </div>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-        {{-- <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div> --}}
       </div>
     </div>

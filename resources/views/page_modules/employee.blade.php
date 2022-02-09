@@ -62,20 +62,18 @@
                           </td>
                           <td class="align-middle">
                             <div class="d-flex gap-2">
-                              <button value="{{ $user->id }}" class="view_btn" style="border: none; background: transparent;"><i class="far fa-eye" style="font-size: 20px;"></i></button>
-                              <button value="{{ $user->id }}" class="edit_btn" style="border: none; background: transparent;"><i class="fas fa-pencil-alt" style="font-size: 20px;"></i></button>
-                              <button value="{{ $user->id }}" class="delete_btn" style="border: none; background: transparent;"><i class="far fa-trash-alt" style="font-size: 20px;"></i></button>
-                              {{-- <form action="{{ route("delete_employee", $user->id) }}" method="post">
-                                    @csrf
-                                    <button class="show_remove_confirm" style="border: none; background: transparent;"><i class="far fa-trash-alt" style="font-size: 20px;"></i></button>
-                              </form> --}}
+                              <button value="{{ $user->id }}" class="view_btn" onMouseOver="this.style.color='#40916c'" onMouseOut="this.style.color='#000'" style="border: none; background: transparent;"><i class="far fa-eye" style="font-size: 20px;"></i></button>
+                              <button value="{{ $user->id }}" class="edit_btn" onMouseOver="this.style.color='#219ebc'" onMouseOut="this.style.color='#000'" style="border: none; background: transparent;"><i class="fas fa-pencil-alt" style="font-size: 20px;"></i></button>
+                              @unless ($user->user_type == 'Admin' && $user->name == 'Lorn Sovannra')
+                                <button value="{{ $user->id }}" class="delete_btn" onMouseOver="this.style.color='#f00'" onMouseOut="this.style.color='#000'" style="border: none; background: transparent;"><i class="far fa-trash-alt" style="font-size: 20px;"></i></button>
+                              @endunless
                             </div>
                           </td>
                           {{-- Edit Modal --}}
-                          @include('modals.edit_employee')
+                          @include('modals.employee.edit_employee')
                         </tr>
                         {{-- Delete Modal --}}
-                        @include('modals.delete_employee')
+                        @include('modals.employee.delete_employee')
                     @endforeach
                 </tbody>
               </table>
@@ -84,11 +82,11 @@
     </div>
     <div>
       {{-- View Modal --}}
-      @include('modals.view_employee')
+      @include('modals.employee.view_employee')
     </div>
     <div>
       {{-- Create Employee Modal --}}
-      @include('modals.create_employee')
+      @include('modals.employee.create_employee')
     </div>
   </div>
 </section>

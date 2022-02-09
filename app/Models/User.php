@@ -14,26 +14,14 @@ class User extends Authenticatable
 
     public $timestamps = false;
 
+    public function order()
+    {
+        return $this->hasMany(Order::class, "employee_id");
+    }
+
     protected $guarded = [
         
     ];
-
-    /* protected $fillable = [
-        'name',
-        'email',
-        'user_type',
-        'role',
-        'company',
-        'job_title',
-        'phone',
-        'home_phone',
-        'address',
-        'city',
-        'state_province',
-        'zip_postal_code',
-        'country_region',
-        'password'
-    ]; */
 
     protected $hidden = [
         'password',
