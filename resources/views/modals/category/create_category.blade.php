@@ -11,7 +11,7 @@
                 <div class="card-header">{{ __('Create') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{-- {{ route('create_employee') }} --}}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('create_category') }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="row mb-3">
@@ -34,8 +34,8 @@
                             <div class="col-md-6">
                                 <select it="status" class="form-select @error('status') is-invalid @enderror" aria-label="Default select example" name="status" value="{{ old('status') }}" required autocomplete="status" autofocus>
                                     <option selected disabled>Select Status</option>
-                                    <option value="Siem Reap">Siem Reap</option>
-                                    <option value="Phnom Penh">Phnom Penh</option>
+                                    <option value="Hot">Hot</option>
+                                    <option value="Simple">Simple</option>
                                 </select>
 
                                 @error('status')

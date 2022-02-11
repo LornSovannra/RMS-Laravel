@@ -10,15 +10,17 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger("employee_id");
+            $table->unsignedBigInteger("employee_id")->nullable();
             $table->timestamp("order_date");
             $table->string("status");
             $table->integer("print_qty");
-            $table->unsignedBigInteger("table_id");
+            $table->unsignedBigInteger("table_id")->nullable();
 
             $table->foreign("employee_id")->references("id")
                 -> on("users") -> cascadeOnDelete("cascade");
-           /*  $table->foreign("table_id")->references("id")
+
+            //Problem Here
+            /* $table->foreign("table_id")->references("id")
                 -> on("tables") -> cascadeOnDelete("cascade"); */
         });
     }

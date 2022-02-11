@@ -19,9 +19,7 @@ class User extends Authenticatable
         return $this->hasMany(Order::class, "employee_id");
     }
 
-    protected $guarded = [
-        
-    ];
+    protected $guarded = [];
 
     protected $hidden = [
         'password',

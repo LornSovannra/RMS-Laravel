@@ -14,7 +14,7 @@
             @csrf
             <div style="display: flex; align-items: center; margin-top: 40px; padding: 5px 10px; border-radius: 10px; border: 1px solid green; border-radius: 10px;">
                 <i class="fas fa-search" style="margin-right: 10px;"></i>
-                <input name="search_employee" type="text" placeholder="Search Category" style="width: 100%; border: none; outline: none;">
+                <input name="search_employee" type="text" placeholder="Search Table" style="width: 100%; border: none; outline: none;">
             </div>
         </form>
     
@@ -32,11 +32,9 @@
                     @foreach ($tables as $table)    
                         <tr>
                           <th scope="row" class="align-middle">{{ $table->id }}</th>
-                          <td class="align-middle">{{ $table->name }}</td>
-                          <td class="align-middle">{{ $table->email }}</td>
-                          <td>
-                              <img class="rounded-circle" style="width: 70px; height: 70px; object-fit: cover;" src="table_images/{{ $table->photo }}" alt="{{ $table->photo }}">
-                          </td>
+                          <td class="align-middle">{{ $table->table_name }}</td>
+                          <td class="align-middle">{{ $table->description }}</td>
+                          <td class="align-middle">{{ $table->status }}</td>
                           <td class="align-middle">
                             <div class="d-flex gap-2">
                               <button value="{{ $table->id }}" class="view_btn" onMouseOver="this.style.color='#40916c'" onMouseOut="this.style.color='#000'" style="border: none; background: transparent;"><i class="far fa-eye" style="font-size: 20px;"></i></button>

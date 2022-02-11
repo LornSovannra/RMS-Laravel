@@ -24,4 +24,14 @@ class TableController extends Controller
             return view('pages.table', compact("tables", "auth"));
         }
     }
+
+    public function Create(Request $request){
+        $table = new Table();
+        $table->table_name = $request->table_name;
+        $table->description = $request->description;
+        $table->status = $request->status;
+        $table->save();
+
+        return back();
+    }
 }

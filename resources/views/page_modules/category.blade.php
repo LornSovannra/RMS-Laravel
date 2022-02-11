@@ -32,10 +32,10 @@
                     @foreach ($categories as $category)    
                         <tr>
                           <th scope="row" class="align-middle">{{ $category->id }}</th>
-                          <td class="align-middle">{{ $category->name }}</td>
-                          <td class="align-middle">{{ $category->email }}</td>
+                          <td class="align-middle">{{ $category->category_name }}</td>
+                          <td class="align-middle">{{ $category->status }}</td>
                           <td>
-                              <img class="rounded-circle" style="width: 70px; height: 70px; object-fit: cover;" src="category_images/{{ $category->photo }}" alt="{{ $category->photo }}">
+                              <img class="rounded" style="width: 200px; height: 100px; object-fit: cover;" src="category_images/{{ $category->category_image }}" alt="{{ $category->category_image }}">
                           </td>
                           <td class="align-middle">
                             <div class="d-flex gap-2">

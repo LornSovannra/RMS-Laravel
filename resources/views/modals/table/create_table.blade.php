@@ -11,16 +11,16 @@
                 <div class="card-header">{{ __('Create') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{-- {{ route('create_employee') }} --}}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('create_table') }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="row mb-3">
-                            <label for="item_name" class="col-md-4 col-form-label text-md-end">{{ __('Table Name') }}</label>
+                            <label for="table_name" class="col-md-4 col-form-label text-md-end">{{ __('Table Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="item_name" type="text" class="form-control @error('item_name') is-invalid @enderror" name="item_name" value="{{ old('item_name') }}" required autocomplete="item_name" autofocus>
+                                <input id="table_name" type="text" class="form-control @error('table_name') is-invalid @enderror" name="table_name" value="{{ old('table_name') }}" required autocomplete="table_name" autofocus>
 
-                                @error('item_name')
+                                @error('table_name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -32,7 +32,7 @@
                             <label for="description" class="col-md-4 col-form-label text-md-end">{{ __('Description') }}</label>
 
                             <div class="col-md-6">
-                                <input id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description" value="{{ old('description') }}" required autocomplete="description" autofocus>
+                                <input id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description" value="{{ old('description') }}" autocomplete="description" autofocus>
 
                                 @error('description')
                                     <span class="invalid-feedback" role="alert">
@@ -48,8 +48,8 @@
                             <div class="col-md-6">
                                 <select it="status" class="form-select @error('status') is-invalid @enderror" aria-label="Default select example" name="status" value="{{ old('status') }}" required autocomplete="status" autofocus>
                                     <option selected disabled>Select Status</option>
-                                    <option value="Siem Reap">Siem Reap</option>
-                                    <option value="Phnom Penh">Phnom Penh</option>
+                                    <option value="Normal">Normal</option>
+                                    <option value="VIP">VIP</option>
                                 </select>
 
                                 @error('status')

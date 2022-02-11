@@ -24,4 +24,22 @@ class CategoryController extends Controller
             return view('pages.category', compact("categories", "auth"));
         }
     }
+
+    public function Create(Request $request){
+        if($request -> hasFile("category_image") && $request -> file("category_image") -> isValid())
+        {
+            $file = time() . "." . $request -> file("category_image") -> getClientOriginalExtension();
+            $request -> file("category_image") -> move(public_path('/category_images'), $file);
+        }else{
+            $file = "no-image.jpg";
+        }
+
+        $category = new Category();
+        $category->category_name = $request->category_name;
+        $category->status = $request->status;
+        $category->category_image = $file;
+        $category->save();
+
+        return back();
+    }
 }
