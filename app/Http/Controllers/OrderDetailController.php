@@ -36,7 +36,7 @@ class OrderDetailController extends Controller
         $order_detail->QtyOrder = $request->qty_order;
         $order_detail->save();
 
-        return back();
+        return redirect("/order-detail")->with("order_detail_created", "Order detail created!");
     }
 
     public function View($id){
@@ -59,12 +59,12 @@ class OrderDetailController extends Controller
 
     public function Update(Request $req){
         $order_detail = OrderDetail::findOrFail($req->id);
-        $order_detail -> order_detail_name = $req -> order_detail_name;
-        $order_detail -> description = $req -> description;
-        $order_detail -> status = $req -> status;
+        $order_detail -> order_id = $req -> order_id;
+        $order_detail -> item_id = $req -> item_id;
+        $order_detail -> QtyOrder = $req -> qty_order;
         $order_detail -> save();
 
-        return back();
+        return redirect("/order-detail")->with("order_detail_updated", "Order detail updated");
     }
 
     public function Remove($id){
@@ -80,6 +80,6 @@ class OrderDetailController extends Controller
         $order_detail = OrderDetail::findOrFail($req->remove_id);
         $order_detail -> delete();
 
-        return back();
+        return redirect("/order-detail")->with("order_detail_deleted", "Order detail deleted");
     }
 }

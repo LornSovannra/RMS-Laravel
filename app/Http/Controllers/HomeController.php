@@ -33,17 +33,15 @@ class HomeController extends Controller
     public function ChangePassword(Request $request){
         $id = Auth::id();
         $user = User::findOrFail($id);
-        $user_current_password = Hash::make($user->password);
+        $password_verified = Hash::check($request->current_password, $user->password);
 
-        if($request->current_password == $user->$user_current_password){
-            $user->password = $request->new_password;
+        if($password_verified){
+            $user->password = Hash::make($request->new_password);
             $user->save();
 
-            /* return back(); */
-            return 'Changed password successfully';
+            return redirect("/")->with("changed_password_successfully", "Changed password successfully!");
         }else{
-            /* return redirect("/"); */
-            return 'Incorrect password';
+            return redirect("/")->with("fail_to_change_password", "Failed to change password!");
         }
     }
 }

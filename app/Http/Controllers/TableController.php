@@ -32,7 +32,7 @@ class TableController extends Controller
         $table->status = $request->status;
         $table->save();
 
-        return back();
+        return redirect("/table")->with("table_created", "Table created!");
     }
 
     public function View($id){
@@ -60,7 +60,7 @@ class TableController extends Controller
         $table -> status = $req -> status;
         $table -> save();
 
-        return back();
+        return redirect("/table")->with("table_updated", "Table updated!");
     }
 
     public function Remove($id){
@@ -76,6 +76,6 @@ class TableController extends Controller
         $table = Table::findOrFail($req->remove_id);
         $table -> delete();
 
-        return back();
+        return redirect("/table")->with("table_deleted", "Table deleted!");
     }
 }

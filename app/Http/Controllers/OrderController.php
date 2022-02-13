@@ -37,7 +37,7 @@ class OrderController extends Controller
         $order->table_id = $request->table_id;
         $order->save();
 
-        return back();
+        return redirect("/order")->with("order_created", "Order created!");
     }
 
     public function View($id){
@@ -74,7 +74,7 @@ class OrderController extends Controller
         $order -> table_id = $req -> table_id;
         $order -> save();
 
-        return back();
+        return redirect("/order")->with("order_updated", "Order updated!");
     }
 
     public function Remove($id){
@@ -90,6 +90,6 @@ class OrderController extends Controller
         $order = Order::findOrFail($req->remove_id);
         $order -> delete();
 
-        return back();
+        return redirect("/order")->with("order_deleted", "Order deleted!");
     }
 }

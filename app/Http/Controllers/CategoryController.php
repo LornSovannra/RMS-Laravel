@@ -40,7 +40,7 @@ class CategoryController extends Controller
         $category->category_image = $file;
         $category->save();
 
-        return back();
+        return redirect("/category")->with("category_created", "Category created!");
     }
 
     public function View($id){
@@ -77,7 +77,7 @@ class CategoryController extends Controller
         $category -> category_image = $file;
         $category -> save();
 
-        return back();
+        return redirect("/category")->with("category_updated", "Category updated!");
     }
 
     public function Remove($id){
@@ -93,6 +93,6 @@ class CategoryController extends Controller
         $category = Category::findOrFail($req->remove_id);
         $category -> delete();
 
-        return back();
+        return redirect("/category")->with("category_deleted", "Category deleted!");
     }
 }

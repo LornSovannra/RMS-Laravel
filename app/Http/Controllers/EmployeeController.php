@@ -54,7 +54,7 @@ class EmployeeController extends Controller
         $user -> password = Hash::make($req -> password);
         $user -> save();
 
-        return back();
+        return redirect("/employee")->with("employee_created", "Employee created!");
     }
 
     public function View($id){
@@ -102,7 +102,7 @@ class EmployeeController extends Controller
         $user -> photo = $file;
         $user -> save();
 
-        return back();
+        return redirect("/employee")->with("employee_updated", "Employee updated!");
     }
 
     public function Remove($id){
@@ -118,6 +118,6 @@ class EmployeeController extends Controller
         $user = User::findOrFail($req->remove_id);
         $user -> delete();
 
-        return back();
+        return redirect("/employee")->with("employee_deleted", "Employee deleted!");
     }
 }

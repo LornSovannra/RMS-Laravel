@@ -45,7 +45,7 @@ class ItemController extends Controller
         $item->item_image = $file;
         $item->save();
 
-        return back();
+        return redirect("/item")->with("item_created", "Item created!");
     }
 
     public function View($id){
@@ -85,7 +85,7 @@ class ItemController extends Controller
         $item -> item_image = $file;
         $item -> save();
 
-        return back();
+        return redirect("/item")->with("item_updated", "Item updated!");
     }
 
     public function Remove($id){
@@ -101,6 +101,6 @@ class ItemController extends Controller
         $item = Item::findOrFail($req->remove_id);
         $item -> delete();
 
-        return back();
+        return redirect("/item")->with("item_deleted", "Item deleted!");
     }
 }

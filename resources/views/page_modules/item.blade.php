@@ -1,5 +1,22 @@
 <section>
     <div class="overflow-hidden" style="background: white; border-radius: 10px; padding: 20px;">
+        @if(session()->has('item_created'))
+          <div style="border-radius: 10px" class="alert alert-primary" role="alert">
+              {{ session()->get('item_created') }}
+          </div>
+        @endif
+
+        @if(session()->has('item_updated'))
+            <div style="border-radius: 10px" class="alert alert-warning" role="alert">
+                {{ session()->get('item_updated') }}
+            </div>
+        @endif
+
+        @if(session()->has('item_deleted'))
+            <div style="border-radius: 10px" class="alert alert-danger" role="alert">
+                {{ session()->get('item_deleted') }}
+            </div>
+        @endif
 
         <div style="display: flex; align-items: center; justify-content: space-between;">
             <h1>Item</h1>

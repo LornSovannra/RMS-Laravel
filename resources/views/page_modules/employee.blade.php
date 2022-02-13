@@ -1,6 +1,22 @@
 <section>
-    <div class="overflow-hidden" style="background: white; border-radius: 10px; padding: 20px;">
+  <div class="overflow-hidden" style="background: white; border-radius: 10px; padding: 20px;">
+        @if(session()->has('employee_created'))
+          <div style="border-radius: 10px" class="alert alert-primary" role="alert">
+              {{ session()->get('employee_created') }}
+          </div>
+        @endif
 
+        @if(session()->has('employee_updated'))
+            <div style="border-radius: 10px" class="alert alert-warning" role="alert">
+                {{ session()->get('employee_updated') }}
+            </div>
+        @endif
+
+        @if(session()->has('employee_deleted'))
+            <div style="border-radius: 10px" class="alert alert-danger" role="alert">
+                {{ session()->get('employee_deleted') }}
+            </div>
+        @endif
         <div {{-- class="d-flex justify-content-between" --}} style="display: flex; align-items: center; justify-content: space-between;">
             <h1>Employee</h1>
 
