@@ -6,7 +6,7 @@
             <h5 class="modal-title" id="exampleModalLabel">Delete Order Detail</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <form action="{{-- {{ route("delete_employee") }} --}}" method="post">
+        <form action="{{ route("delete_order_detail") }}" method="post">
             @csrf
 
             <div class="modal-body">

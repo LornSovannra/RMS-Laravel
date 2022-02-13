@@ -5,14 +5,14 @@
                 Dashboard
             </li>
         </a>
-        <a class="nav_a" href="{{ route("order_home") }}" style="text-decoration: none; {{ Request::segment(1) == 'order' ? 'color: white;' : 'color: black;' }}">
-            <li class="nav_a_li" style="padding: 10px 0 10px 20px; border-radius: 10px; {{ Request::segment(1) == 'order' ? 'background: green;' : 'background: white;' }}">
-                Order
-            </li>
-        </a>
         <a class="nav_a" href="{{ route("order_detail_home") }}" style="text-decoration: none; {{ Request::segment(1) == 'order-detail' ? 'color: white;' : 'color: black;' }}">
             <li class="nav_a_li" style="padding: 10px 0 10px 20px; border-radius: 10px; {{ Request::segment(1) == 'order-detail' ? 'background: green;' : 'background: white;' }}">
                 Order Detail
+            </li>
+        </a>
+        <a class="nav_a" href="{{ route("order_home") }}" style="text-decoration: none; {{ Request::segment(1) == 'order' ? 'color: white;' : 'color: black;' }}">
+            <li class="nav_a_li" style="padding: 10px 0 10px 20px; border-radius: 10px; {{ Request::segment(1) == 'order' ? 'background: green;' : 'background: white;' }}">
+                Order
             </li>
         </a>
         <a class="nav_a" href="{{ route("item_home") }}" style="text-decoration: none; {{ Request::segment(1) == 'item' ? 'color: white;' : 'color: black;' }}">

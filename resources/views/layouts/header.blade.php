@@ -1,13 +1,13 @@
-<header {{-- class="py-2 px-4" --}} style="background: #2d6a4f; padding: 0 30px;">
-    <div {{-- class="d-flex" --}} style="color: white; align-items: center; display: grid; grid-template-columns: 350px auto;">
-        <div {{-- class="col-3" --}} style="display: flex; align-items: center;">
+<header style="background: #2d6a4f; padding: 0 30px;">
+    <div style="color: white; align-items: center; display: grid; grid-template-columns: 350px auto;">
+        <div style="display: flex; align-items: center;">
             <h1>LOGO</h1>
         </div>
-        <div {{-- class="d-flex col-9 justify-content-between" --}} style="display: flex; justify-content: space-between; align-items: center;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
             <div>
                 <h3>Welcome back, {{ $auth -> name }}!</h3>
             </div>
-            <div {{-- class="d-flex gap-2" --}} style="align-items: center; display: flex; gap: 20px;">
+            <div style="align-items: center; display: flex; gap: 20px;">
                 <div style="display: flex; gap: 10px;">
                     <i class="fab fa-facebook-square" style="font-size: 34px;"></i>
                     <i class="fab fa-instagram-square" style="font-size: 34px;"></i>
@@ -21,7 +21,7 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('order_home') }}">
+                            <a data-bs-toggle="modal" data-bs-target="#changePasswordModal" class="dropdown-item" href="{{ route('order_home') }}">
                                 {{ __('Change Password') }}
                             </a>
                             <a class="dropdown-item" href="{{ route('logout') }}"
@@ -38,5 +38,8 @@
                 </div>
             </div>
         </div>
+
+        {{-- Change Password Modal --}}
+        @include('modals.change_password.change_password')
     </div>
 </header>

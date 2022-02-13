@@ -11,17 +11,18 @@
                 <div class="card-header">{{ __('Create') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{-- {{ route('create_employee') }} --}}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('create_order_detail') }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="row mb-3">
                             <label for="order_id" class="col-md-4 col-form-label text-md-end">{{ __('Order ID') }}</label>
 
                             <div class="col-md-6">
-                                <select it="order_id" class="form-select @error('order_id') is-invalid @enderror" aria-label="Default select example" name="order_id" value="{{ old('order_id') }}" required autocomplete="order_id" autofocus>
+                                <select id="order_id" class="form-select @error('order_id') is-invalid @enderror" aria-label="Default select example" name="order_id" value="{{ old('order_id') }}" required autocomplete="order_id" autofocus>
                                     <option selected disabled>Select Order ID</option>
-                                    <option value="Siem Reap">Siem Reap</option>
-                                    <option value="Phnom Penh">Phnom Penh</option>
+                                    @foreach ($orders as $order)
+                                        <option value="{{ $order->id }}">{{ $order->id }}</option>
+                                    @endforeach
                                 </select>
 
                                 @error('order_id')
@@ -36,10 +37,11 @@
                             <label for="item_id" class="col-md-4 col-form-label text-md-end">{{ __('Item ID') }}</label>
 
                             <div class="col-md-6">
-                                <select it="item_id" class="form-select @error('item_id') is-invalid @enderror" aria-label="Default select example" name="item_id" value="{{ old('item_id') }}" required autocomplete="item_id" autofocus>
+                                <select id="item_id" class="form-select @error('item_id') is-invalid @enderror" aria-label="Default select example" name="item_id" value="{{ old('item_id') }}" required autocomplete="item_id" autofocus>
                                     <option selected disabled>Select Item ID</option>
-                                    <option value="Siem Reap">Siem Reap</option>
-                                    <option value="Phnom Penh">Phnom Penh</option>
+                                    @foreach ($items as $item)
+                                        <option value="{{ $item->id }}">{{ $item->item_name }}</option>
+                                    @endforeach
                                 </select>
 
                                 @error('item_id')

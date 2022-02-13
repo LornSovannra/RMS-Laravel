@@ -15,6 +15,15 @@
                 <div class="card-body">
 
                     <div class="row mb-3">
+                        <label for="view_id" class="col-md-4 col-form-label text-md-end">{{ __('Employee ID') }}</label>
+
+                        <div class="col-md-6">
+                            <input disabled id="view_id" type="text" class="form-control">
+                        </div>
+
+                    </div>
+
+                    <div class="row mb-3">
                         <label for="view_name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
 
                         <div class="col-md-6">
@@ -56,7 +65,7 @@
                     </div>
 
                     <div class="row mb-3">
-                        <label for="job_title" class="col-md-4 col-form-label text-md-end">{{ __('JobTitle') }}</label>
+                        <label for="job_title" class="col-md-4 col-form-label text-md-end">{{ __('Job Title') }}</label>
 
                         <div class="col-md-6">
                             <input disabled id="view_job_title" type="text" class="form-control">
@@ -72,7 +81,7 @@
                     </div>
 
                     <div class="row mb-3">
-                        <label for="home_phone" class="col-md-4 col-form-label text-md-end">{{ __('HomePhone') }}</label>
+                        <label for="home_phone" class="col-md-4 col-form-label text-md-end">{{ __('Home Phone') }}</label>
 
                         <div class="col-md-6">
                             <input disabled id="view_home_phone" type="text" class="form-control">
@@ -96,7 +105,7 @@
                     </div>
 
                     <div class="row mb-3">
-                        <label for="state_province" class="col-md-4 col-form-label text-md-end">{{ __('StateProvince') }}</label>
+                        <label for="state_province" class="col-md-4 col-form-label text-md-end">{{ __('State/Province') }}</label>
 
                         <div class="col-md-6">
                             <input disabled id="view_state_province" type="text" class="form-control">
@@ -104,7 +113,7 @@
                     </div>
 
                     <div class="row mb-3">
-                        <label for="zip_postal_code" class="col-md-4 col-form-label text-md-end">{{ __('ZipPostalCode') }}</label>
+                        <label for="zip_postal_code" class="col-md-4 col-form-label text-md-end">{{ __('Zip/Postal Code') }}</label>
 
                         <div class="col-md-6">
                             <input disabled id="view_zip_postal_code" type="text" class="form-control">
@@ -112,7 +121,7 @@
                     </div>
 
                     <div class="row mb-3">
-                        <label for="country_region" class="col-md-4 col-form-label text-md-end">{{ __('CountryRegion') }}</label>
+                        <label for="country_region" class="col-md-4 col-form-label text-md-end">{{ __('Country/Region') }}</label>
 
                         <div class="col-md-6">
                             <input disabled id="view_country_region" type="text" class="form-control">

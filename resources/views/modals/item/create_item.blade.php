@@ -11,11 +11,11 @@
                 <div class="card-header">{{ __('Create') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{-- {{ route('create_employee') }} --}}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('create_item') }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="row mb-3">
-                            <label for="item_name" class="col-md-4 col-form-label text-md-end">{{ __('Table Name') }}</label>
+                            <label for="item_name" class="col-md-4 col-form-label text-md-end">{{ __('Item Name') }}</label>
 
                             <div class="col-md-6">
                                 <input id="item_name" type="text" class="form-control @error('item_name') is-invalid @enderror" name="item_name" value="{{ old('item_name') }}" required autocomplete="item_name" autofocus>
@@ -32,7 +32,7 @@
                             <label for="description" class="col-md-4 col-form-label text-md-end">{{ __('Description') }}</label>
 
                             <div class="col-md-6">
-                                <input id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description" value="{{ old('description') }}" required autocomplete="description" autofocus>
+                                <input id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description" value="{{ old('description') }}" autocomplete="description" autofocus>
 
                                 @error('description')
                                     <span class="invalid-feedback" role="alert">
@@ -46,10 +46,11 @@
                             <label for="category_id" class="col-md-4 col-form-label text-md-end">{{ __('Category ID') }}</label>
 
                             <div class="col-md-6">
-                                <select it="category_id" class="form-select @error('category_id') is-invalid @enderror" aria-label="Default select example" name="category_id" value="{{ old('category_id') }}" required autocomplete="category_id" autofocus>
+                                <select id="category_id" class="form-select @error('category_id') is-invalid @enderror" aria-label="Default select example" name="category_id" value="{{ old('category_id') }}" required autocomplete="category_id" autofocus>
                                     <option selected disabled>Select Category ID</option>
-                                    <option value="Siem Reap">Siem Reap</option>
-                                    <option value="Phnom Penh">Phnom Penh</option>
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->category_name }}</option>
+                                    @endforeach
                                 </select>
 
                                 @error('category_id')
@@ -80,8 +81,8 @@
                             <div class="col-md-6">
                                 <select it="status" class="form-select @error('status') is-invalid @enderror" aria-label="Default select example" name="status" value="{{ old('status') }}" required autocomplete="status" autofocus>
                                     <option selected disabled>Select Status</option>
-                                    <option value="Siem Reap">Siem Reap</option>
-                                    <option value="Phnom Penh">Phnom Penh</option>
+                                    <option value="Normal">Normal</option>
+                                    <option value="Hot">Hot</option>
                                 </select>
 
                                 @error('status')

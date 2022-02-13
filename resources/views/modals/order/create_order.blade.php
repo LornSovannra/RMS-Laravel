@@ -11,17 +11,18 @@
                 <div class="card-header">{{ __('Create') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{-- {{ route('create_employee') }} --}}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('create_order') }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="row mb-3">
                             <label for="employee_id" class="col-md-4 col-form-label text-md-end">{{ __('Employee ID') }}</label>
 
                             <div class="col-md-6">
-                                <select it="employee_id" class="form-select @error('employee_id') is-invalid @enderror" aria-label="Default select example" name="employee_id" value="{{ old('employee_id') }}" required autocomplete="employee_id" autofocus>
-                                    <option selected disabled>Select Order ID</option>
-                                    <option value="Siem Reap">Siem Reap</option>
-                                    <option value="Phnom Penh">Phnom Penh</option>
+                                <select id="employee_id" class="form-select @error('employee_id') is-invalid @enderror" aria-label="Default select example" name="employee_id" value="{{ old('employee_id') }}" required autocomplete="employee_id" autofocus>
+                                    <option selected disabled>Select Employee ID</option>
+                                    @foreach ($employees as $employee)
+                                        <option value="{{ $employee->id }}">{{ $employee->name }}</option>
+                                    @endforeach
                                 </select>
 
                                 @error('employee_id')
@@ -50,10 +51,10 @@
                             <label for="status" class="col-md-4 col-form-label text-md-end">{{ __('Status') }}</label>
 
                             <div class="col-md-6">
-                                <select it="status" class="form-select @error('status') is-invalid @enderror" aria-label="Default select example" name="status" value="{{ old('status') }}" required autocomplete="status" autofocus>
+                                <select id="status" class="form-select @error('status') is-invalid @enderror" aria-label="Default select example" name="status" value="{{ old('status') }}" required autocomplete="status" autofocus>
                                     <option selected disabled>Select Item ID</option>
-                                    <option value="Siem Reap">Siem Reap</option>
-                                    <option value="Phnom Penh">Phnom Penh</option>
+                                    <option value="Hot">Hot</option>
+                                    <option value="Normal">Normal</option>
                                 </select>
 
                                 @error('status')
@@ -82,10 +83,11 @@
                             <label for="table_id" class="col-md-4 col-form-label text-md-end">{{ __('Table ID') }}</label>
 
                             <div class="col-md-6">
-                                <select it="table_id" class="form-select @error('table_id') is-invalid @enderror" aria-label="Default select example" name="table_id" value="{{ old('table_id') }}" required autocomplete="table_id" autofocus>
+                                <select id="table_id" class="form-select @error('table_id') is-invalid @enderror" aria-label="Default select example" name="table_id" value="{{ old('table_id') }}" required autocomplete="table_id" autofocus>
                                     <option selected disabled>Select Item ID</option>
-                                    <option value="Siem Reap">Siem Reap</option>
-                                    <option value="Phnom Penh">Phnom Penh</option>
+                                    @foreach ($tables as $table)
+                                        <option value="{{ $table->id }}">{{ $table->table_name }}</option>
+                                    @endforeach
                                 </select>
 
                                 @error('table_id')

@@ -100,7 +100,6 @@ class EmployeeController extends Controller
         }
 
         $user -> photo = $file;
-        /* $user -> password = Hash::make($req -> password); */
         $user -> save();
 
         return back();

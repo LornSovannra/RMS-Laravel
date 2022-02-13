@@ -91,7 +91,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="job_title" class="col-md-4 col-form-label text-md-end">{{ __('JobTitle') }}</label>
+                            <label for="job_title" class="col-md-4 col-form-label text-md-end">{{ __('Job Title') }}</label>
 
                             <div class="col-md-6">
                                 <input id="job_title" type="text" class="form-control @error('job_title') is-invalid @enderror" name="job_title" value="{{ old('job_title') }}" required autocomplete="job_title" autofocus>
@@ -119,7 +119,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="home_phone" class="col-md-4 col-form-label text-md-end">{{ __('HomePhone') }}</label>
+                            <label for="home_phone" class="col-md-4 col-form-label text-md-end">{{ __('Home Phone') }}</label>
 
                             <div class="col-md-6">
                                 <input id="home_phone" type="text" class="form-control @error('home_phone') is-invalid @enderror" name="home_phone" value="{{ old('home_phone') }}" required autocomplete="home_phone" autofocus>
@@ -136,7 +136,7 @@
                             <label for="address" class="col-md-4 col-form-label text-md-end">{{ __('Address') }}</label>
 
                             <div class="col-md-6">
-                                <select it="address" class="form-select @error('address') is-invalid @enderror" aria-label="Default select example" name="address" value="{{ old('address') }}" required autocomplete="address" autofocus>
+                                <select id="address" class="form-select @error('address') is-invalid @enderror" aria-label="Default select example" name="address" value="{{ old('address') }}" required autocomplete="address" autofocus>
                                     <option selected disabled>Select User Type</option>
                                     <option value="Siem Reap">Siem Reap</option>
                                     <option value="Phnom Penh">Phnom Penh</option>
@@ -169,7 +169,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="state_province" class="col-md-4 col-form-label text-md-end">{{ __('StateProvince') }}</label>
+                            <label for="state_province" class="col-md-4 col-form-label text-md-end">{{ __('State/Province') }}</label>
 
                             <div class="col-md-6">
                                 <select id="state_province" class="form-select @error('state_province') is-invalid @enderror" aria-label="Default select example" name="state_province" value="{{ old('state_province') }}" required autocomplete="state_province" autofocus>
@@ -187,7 +187,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="zip_postal_code" class="col-md-4 col-form-label text-md-end">{{ __('ZipPostalCode') }}</label>
+                            <label for="zip_postal_code" class="col-md-4 col-form-label text-md-end">{{ __('Zip/Postal Code') }}</label>
 
                             <div class="col-md-6">
                                 <input id="zip_postal_code" type="text" class="form-control @error('zip_postal_code') is-invalid @enderror" name="zip_postal_code" value="{{ old('zip_postal_code') }}" required autocomplete="zip_postal_code" autofocus>
@@ -201,7 +201,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="country_region" class="col-md-4 col-form-label text-md-end">{{ __('CountryRegion') }}</label>
+                            <label for="country_region" class="col-md-4 col-form-label text-md-end">{{ __('Country/Region') }}</label>
 
                             <div class="col-md-6">
                                 <input id="country_region" type="text" class="form-control @error('country_region') is-invalid @enderror" name="country_region" value="{{ old('country_region') }}" required autocomplete="country_region" autofocus>
@@ -251,11 +251,6 @@
                         </div>
 
                         <div class="row mb-0">
-                            {{-- <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div> --}}
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 <button type="submit" class="btn btn-primary">Create</button>
@@ -265,9 +260,5 @@
                 </div>
             </div>
         </div>
-        {{-- <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div> --}}
       </div>
     </div>

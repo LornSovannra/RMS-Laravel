@@ -46,7 +46,7 @@
                             <label for="status" class="col-md-4 col-form-label text-md-end">{{ __('Status') }}</label>
 
                             <div class="col-md-6">
-                                <select it="status" class="form-select @error('status') is-invalid @enderror" aria-label="Default select example" name="status" value="{{ old('status') }}" required autocomplete="status" autofocus>
+                                <select id="status" class="form-select @error('status') is-invalid @enderror" aria-label="Default select example" name="status" value="{{ old('status') }}" required autocomplete="status" autofocus>
                                     <option selected disabled>Select Status</option>
                                     <option value="Normal">Normal</option>
                                     <option value="VIP">VIP</option>

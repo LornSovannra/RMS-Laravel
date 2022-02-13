@@ -36,6 +36,7 @@
                 type: "GET",
                 url: "/view-employee/" + user_id,
                 success: function(res){
+                  $("#view_id").val(res.user.id)
                   $("#view_name").val(res.user.name)
                   $("#view_email").val(res.user.email)
                   $("#view_user_type").val(res.user.user_type)

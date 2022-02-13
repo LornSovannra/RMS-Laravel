@@ -1,27 +1,26 @@
 <!-- Modal -->
-<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div style="color: black;" class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Table</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Employee</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
             <div class="card">
-                <div class="card-header">{{ __('Update') }}</div>
+                <div class="card-header">{{ __('Change Password') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('update_table') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('change_password') }}" enctype="multipart/form-data">
                         @csrf
 
-                        <input type="hidden" name="id" id="id">
                         <div class="row mb-3">
-                            <label for="table_name" class="col-md-4 col-form-label text-md-end">{{ __('Table Name') }}</label>
+                            <label for="current_password" class="col-md-4 col-form-label text-md-end">{{ __('Current Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="table_name" type="text" class="form-control @error('table_name') is-invalid @enderror" name="table_name" value="{{ old('table_name') }}" required autocomplete="table_name" autofocus>
+                                <input id="current_password" type="password" class="form-control @error('current_password') is-invalid @enderror" name="current_password" value="{{ old('current_password') }}" required autocomplete="current_password" autofocus>
 
-                                @error('table_name')
+                                @error('current_password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -30,12 +29,12 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="description" class="col-md-4 col-form-label text-md-end">{{ __('Description') }}</label>
+                            <label for="new_password" class="col-md-4 col-form-label text-md-end">{{ __('New Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description" value="{{ old('description') }}" autocomplete="description">
+                                <input id="new_password" type="password" class="form-control @error('new_password') is-invalid @enderror" name="new_password" value="{{ old('new_password') }}" required autocomplete="new_password" autofocus>
 
-                                @error('description')
+                                @error('new_password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -44,16 +43,12 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="status" class="col-md-4 col-form-label text-md-end">{{ __('Status') }}</label>
+                            <label for="confirm_new_password" class="col-md-4 col-form-label text-md-end">{{ __('Confirm New Password') }}</label>
 
                             <div class="col-md-6">
-                                <select id="status" class="form-select @error('status') is-invalid @enderror" aria-label="Default select example" name="status" value="{{ old('status') }}" required autocomplete="status" autofocus>
-                                    <option selected disabled>Select Status</option>
-                                    <option value="Normal">Normal</option>
-                                    <option value="VIP">VIP</option>
-                                </select>
+                                <input id="confirm_new_password" type="password" class="form-control @error('confirm_new_password') is-invalid @enderror" name="confirm_new_password" value="{{ old('confirm_new_password') }}" required autocomplete="confirm_new_password" autofocus>
 
-                                @error('status')
+                                @error('confirm_new_password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -64,7 +59,7 @@
                         <div class="row mb-0">
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary">Update</button>
+                                <button type="submit" class="btn btn-primary">Change</button>
                               </div>
                         </div>
                     </form>

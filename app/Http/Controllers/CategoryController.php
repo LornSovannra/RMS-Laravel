@@ -42,4 +42,57 @@ class CategoryController extends Controller
 
         return back();
     }
+
+    public function View($id){
+        $category = Category::findOrFail($id);
+
+        return response()->json([
+            'status'=>200,
+            'category'=>$category
+        ]);
+    }
+
+    public function Edit($id){
+        $category = Category::findOrFail($id);
+
+        return response()->json([
+            'status'=>200,
+            'category'=>$category
+        ]);
+    }
+
+    public function Update(Request $req){
+        $category = Category::findOrFail($req->id);
+        $category -> category_name = $req -> category_name;
+        $category -> status = $req -> status;
+
+        if($req -> hasFile("category_image") && $req -> file("category_image") -> isValid())
+        {
+            $file = time() . "." . $req -> file("category_image") -> getClientOriginalExtension();
+            $req -> file("category_image") -> move(public_path('/category_images'), $file);
+        }else{
+            $file = $category->category_image;
+        }
+
+        $category -> category_image = $file;
+        $category -> save();
+
+        return back();
+    }
+
+    public function Remove($id){
+        $category = Category::findOrFail($id);
+
+        return response()->json([
+            'status'=>200,
+            'category'=>$category
+        ]);
+    }
+
+    public function Delete(Request $req){
+        $category = Category::findOrFail($req->remove_id);
+        $category -> delete();
+
+        return back();
+    }
 }

@@ -10,11 +10,11 @@
             </button>
         </div>
 
-        <form action="{{-- {{ route("search_employee") }} --}}" method="get">
+        <form action="{{ route("search_order_detail") }}" method="get">
             @csrf
             <div style="display: flex; align-items: center; margin-top: 40px; padding: 5px 10px; border-radius: 10px; border: 1px solid green; border-radius: 10px;">
                 <i class="fas fa-search" style="margin-right: 10px;"></i>
-                <input name="search_employee" type="text" placeholder="Search Order Detail" style="width: 100%; border: none; outline: none;">
+                <input name="search_order_detail" type="text" placeholder="Search Order Detail" style="width: 100%; border: none; outline: none;">
             </div>
         </form>
     
@@ -34,7 +34,7 @@
                           <th scope="row" class="align-middle">{{ $order_detail->id }}</th>
                           <td class="align-middle">{{ $order_detail->order_id }}</td>
                           <td class="align-middle">{{ $order_detail->item_id }}</td>
-                          <td class="align-middle">{{ $order_detail->qty_order }}</td>
+                          <td class="align-middle">{{ $order_detail->QtyOrder }}</td>
                           <td class="align-middle">
                             <div class="d-flex gap-2">
                               <button value="{{ $order_detail->id }}" class="view_btn" onMouseOver="this.style.color='#40916c'" onMouseOut="this.style.color='#000'" style="border: none; background: transparent;"><i class="far fa-eye" style="font-size: 20px;"></i></button>

@@ -13,20 +13,10 @@ Auth::routes();
 
 /* Dashboard */
 Route::get('/', [HomeController::class, "index"]) -> name("dashboard");
+Route::post("/change-password", [HomeController::class, "ChangePassword"]) -> name("change_password");
 /* End Dashboard */
 
-/* Item */
-Route::get("/order", [OrderController::class, "OrderHome"]) -> name("order_home");
-Route::get("/view-order/{id}", [OrderController::class, "View"]) -> name("view_order");
-Route::post("/order", [OrderController::class, "Create"]) -> name("create_order");
-Route::get("/edit-order/{id}", [OrderController::class, "Edit"]) -> name("edit_order");
-Route::post("/update-order", [OrderController::class, "Update"]) -> name("update_order");
-Route::get("/remove-order/{id}", [OrderController::class, "Remove"]) -> name("remove_order");
-Route::post("/delete-order", [OrderController::class, "Delete"]) -> name("delete_order");
-Route::get("/search-order", [OrderController::class, "OrderHome"]) -> name("search_order");
-/* End Item */
-
-/* Item */
+/* Order Detail */
 Route::get("/order-detail", [OrderDetailController::class, "OrderDetailHome"]) -> name("order_detail_home");
 Route::get("/view-order-detail/{id}", [OrderDetailController::class, "View"]) -> name("view_order_detail");
 Route::post("/order-detail", [OrderDetailController::class, "Create"]) -> name("create_order_detail");
@@ -35,7 +25,18 @@ Route::post("/update-order-detail", [OrderDetailController::class, "Update"]) ->
 Route::get("/remove-order-detail/{id}", [OrderDetailController::class, "Remove"]) -> name("remove_order_detail");
 Route::post("/delete-order-detail", [OrderDetailController::class, "Delete"]) -> name("delete_order_detail");
 Route::get("/search-order-detail", [OrderDetailController::class, "OrderDetailHome"]) -> name("search_order_detail");
-/* End Item */
+/* End Order Detail */
+
+/* Order */
+Route::get("/order", [OrderController::class, "OrderHome"]) -> name("order_home");
+Route::get("/view-order/{id}", [OrderController::class, "View"]) -> name("view_order");
+Route::post("/order", [OrderController::class, "Create"]) -> name("create_order");
+Route::get("/edit-order/{id}", [OrderController::class, "Edit"]) -> name("edit_order");
+Route::post("/update-order", [OrderController::class, "Update"]) -> name("update_order");
+Route::get("/remove-order/{id}", [OrderController::class, "Remove"]) -> name("remove_order");
+Route::post("/delete-order", [OrderController::class, "Delete"]) -> name("delete_order");
+Route::get("/search-order", [OrderController::class, "OrderHome"]) -> name("search_order");
+/* End Order */
 
 /* Item */
 Route::get("/item", [ItemController::class, "ItemHome"]) -> name("item_home");

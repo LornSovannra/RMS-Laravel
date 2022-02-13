@@ -10,112 +10,54 @@
             <div class="card">
                 <div class="card-header">{{ __('View') }}</div>
                     <div id="view_photo_div" style="text-align: center; border-bottom: 1px solid gray; padding: 10px 0;">
-                        <img style="object-fit: cover; width: 500px; height: 500px; border-radius: 50%" id="view_photo">
+                        <img style="object-fit: cover; width: 500px; height: 500px; border-radius: 20px" id="view_photo">
                     </div>
                 <div class="card-body">
-
                     <div class="row mb-3">
-                        <label for="view_name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
+                        <label for="id" class="col-md-4 col-form-label text-md-end">{{ __('Item ID') }}</label>
 
                         <div class="col-md-6">
-                            <input disabled id="view_name" type="text" class="form-control">
-                        </div>
-
-                    </div>
-
-                    <div class="row mb-3">
-                        <label for="view_email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-
-                        <div class="col-md-6">
-                            <input disabled id="view_email" type="email" class="form-control">
+                            <input disabled id="view_id" type="text" class="form-control">
                         </div>
                     </div>
 
                     <div class="row mb-3">
-                        <label for="user_type" class="col-md-4 col-form-label text-md-end">{{ __('User Type') }}</label>
+                        <label for="item_name" class="col-md-4 col-form-label text-md-end">{{ __('Item Name') }}</label>
 
                         <div class="col-md-6">
-                            <input disabled id="view_user_type" type="text" class="form-control">
+                            <input disabled id="view_item_name" type="text" class="form-control">
                         </div>
                     </div>
 
                     <div class="row mb-3">
-                        <label for="role" class="col-md-4 col-form-label text-md-end">{{ __('Role') }}</label>
+                        <label for="description" class="col-md-4 col-form-label text-md-end">{{ __('Description') }}</label>
 
                         <div class="col-md-6">
-                            <input disabled id="view_role" type="text" class="form-control">
+                            <input disabled id="view_description" type="text" class="form-control">
                         </div>
                     </div>
 
                     <div class="row mb-3">
-                        <label for="comapny" class="col-md-4 col-form-label text-md-end">{{ __('Company') }}</label>
+                        <label for="category_id" class="col-md-4 col-form-label text-md-end">{{ __('Category ID') }}</label>
 
                         <div class="col-md-6">
-                            <input disabled id="view_company" type="text" class="form-control">
+                            <input disabled id="view_category_id" type="text" class="form-control">
                         </div>
                     </div>
 
                     <div class="row mb-3">
-                        <label for="job_title" class="col-md-4 col-form-label text-md-end">{{ __('JobTitle') }}</label>
+                        <label for="unit_price" class="col-md-4 col-form-label text-md-end">{{ __('Unit Price') }}</label>
 
                         <div class="col-md-6">
-                            <input disabled id="view_job_title" type="text" class="form-control">
+                            <input disabled id="view_unit_price" type="text" class="form-control">
                         </div>
                     </div>
 
                     <div class="row mb-3">
-                        <label for="phone" class="col-md-4 col-form-label text-md-end">{{ __('Phone') }}</label>
+                        <label for="status" class="col-md-4 col-form-label text-md-end">{{ __('Status') }}</label>
 
                         <div class="col-md-6">
-                            <input disabled id="view_phone" type="text" class="form-control">
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <label for="home_phone" class="col-md-4 col-form-label text-md-end">{{ __('HomePhone') }}</label>
-
-                        <div class="col-md-6">
-                            <input disabled id="view_home_phone" type="text" class="form-control">
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <label for="address" class="col-md-4 col-form-label text-md-end">{{ __('Address') }}</label>
-
-                        <div class="col-md-6">
-                            <input disabled id="view_address" type="text" class="form-control">
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <label for="city" class="col-md-4 col-form-label text-md-end">{{ __('City') }}</label>
-
-                        <div class="col-md-6">
-                            <input disabled id="view_city" type="text" class="form-control">
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <label for="state_province" class="col-md-4 col-form-label text-md-end">{{ __('StateProvince') }}</label>
-
-                        <div class="col-md-6">
-                            <input disabled id="view_state_province" type="text" class="form-control">
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <label for="zip_postal_code" class="col-md-4 col-form-label text-md-end">{{ __('ZipPostalCode') }}</label>
-
-                        <div class="col-md-6">
-                            <input disabled id="view_zip_postal_code" type="text" class="form-control">
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <label for="country_region" class="col-md-4 col-form-label text-md-end">{{ __('CountryRegion') }}</label>
-
-                        <div class="col-md-6">
-                            <input disabled id="view_country_region" type="text" class="form-control">
+                            <input disabled id="view_status" type="text" class="form-control">
                         </div>
                     </div>
 

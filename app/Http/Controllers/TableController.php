@@ -34,4 +34,48 @@ class TableController extends Controller
 
         return back();
     }
+
+    public function View($id){
+        $table = Table::findOrFail($id);
+
+        return response()->json([
+            'status'=>200,
+            'table'=>$table
+        ]);
+    }
+
+    public function Edit($id){
+        $table = Table::findOrFail($id);
+
+        return response()->json([
+            'status'=>200,
+            'table'=>$table
+        ]);
+    }
+
+    public function Update(Request $req){
+        $table = Table::findOrFail($req->id);
+        $table -> table_name = $req -> table_name;
+        $table -> description = $req -> description;
+        $table -> status = $req -> status;
+        $table -> save();
+
+        return back();
+    }
+
+    public function Remove($id){
+        $table = Table::findOrFail($id);
+
+        return response()->json([
+            'status'=>200,
+            'table'=>$table
+        ]);
+    }
+
+    public function Delete(Request $req){
+        $table = Table::findOrFail($req->remove_id);
+        $table -> delete();
+
+        return back();
+    }
 }

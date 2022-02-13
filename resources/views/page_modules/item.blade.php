@@ -10,11 +10,11 @@
             </button>
         </div>
 
-        <form action="{{-- {{ route("search_employee") }} --}}" method="get">
+        <form action="{{ route("search_item") }}" method="get">
             @csrf
             <div style="display: flex; align-items: center; margin-top: 40px; padding: 5px 10px; border-radius: 10px; border: 1px solid green; border-radius: 10px;">
                 <i class="fas fa-search" style="margin-right: 10px;"></i>
-                <input name="search_employee" type="text" placeholder="Search Item" style="width: 100%; border: none; outline: none;">
+                <input name="search_item" type="text" placeholder="Search Item" style="width: 100%; border: none; outline: none;">
             </div>
         </form>
     
@@ -29,6 +29,7 @@
                     <th scope="col">Unit Price</th>
                     <th scope="col">Status</th>
                     <th scope="col">Item Image</th>
+                    <th scope="col">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -38,9 +39,10 @@
                           <td class="align-middle">{{ $item->item_name }}</td>
                           <td class="align-middle">{{ $item->description }}</td>
                           <td class="align-middle">{{ $item->category_id }}</td>
+                          <td class="align-middle">{{ $item->unit_price }}</td>
                           <td class="align-middle">{{ $item->status }}</td>
                           <td>
-                              <img class="rounded-circle" style="width: 70px; height: 70px; object-fit: cover;" src="item_images/{{ $item->item_image }}" alt="{{ $item->item_image }}">
+                              <img class="rounded" style="width: 100px; height: 100px; object-fit: cover;" src="item_images/{{ $item->item_image }}" alt="{{ $item->item_image }}">
                           </td>
                           <td class="align-middle">
                             <div class="d-flex gap-2">

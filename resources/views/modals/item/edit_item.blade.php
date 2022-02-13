@@ -11,32 +11,17 @@
                 <div class="card-header">{{ __('Update') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{-- {{ route('update_employee') }} --}}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('update_item') }}" enctype="multipart/form-data">
                         @csrf
 
                         <input type="hidden" name="id" id="id">
                         <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
+                            <label for="item_name" class="col-md-4 col-form-label text-md-end">{{ __('Item Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <input id="item_name" type="text" class="form-control @error('item_name') is-invalid @enderror" name="item_name" value="{{ old('item_name') }}" required autocomplete="item_name" autofocus>
 
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
+                                @error('item_name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -45,16 +30,31 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="user_type" class="col-md-4 col-form-label text-md-end">{{ __('User Type') }}</label>
+                            <label for="description" class="col-md-4 col-form-label text-md-end">{{ __('Description') }}</label>
 
                             <div class="col-md-6">
-                                <select id="user_type" class="form-select @error('user_type') is-invalid @enderror" name="user_type" value="{{ old('user_type') }}" required autocomplete="user_type" autofocus>
-                                    <option selected disabled>Select User Type</option>
-                                    <option value="Admin">Admin</option>
-                                    <option value="User">User</option>
+                                <input id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description" value="{{ old('description') }}" autocomplete="description">
+
+                                @error('description')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="category_id" class="col-md-4 col-form-label text-md-end">{{ __('Category ID') }}</label>
+
+                            <div class="col-md-6">
+                                <select id="category_id" class="form-select @error('category_id') is-invalid @enderror" aria-label="Default select example" name="category_id" value="{{ old('category_id') }}" required autocomplete="category_id" autofocus>
+                                    <option selected disabled>Select Category ID</option>
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->category_name }}</option>
+                                    @endforeach
                                 </select>
 
-                                @error('user_type')
+                                @error('category_id')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -63,13 +63,13 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="role" class="col-md-4 col-form-label text-md-end">{{ __('Role') }}</label>
+                            <label for="unit_price" class="col-md-4 col-form-label text-md-end">{{ __('Unit Price') }}</label>
 
                             <div class="col-md-6">
                                 
-                                <input id="role" type="text" class="form-control @error('role') is-invalid @enderror" name="role" value="{{ old('role') }}" required autocomplete="role" autofocus>
+                                <input id="unit_price" type="number" class="form-control @error('unit_price') is-invalid @enderror" name="unit_price" value="{{ old('unit_price') }}" required autocomplete="unit_price" autofocus>
 
-                                @error('role')
+                                @error('unit_price')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -78,72 +78,16 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="comapny" class="col-md-4 col-form-label text-md-end">{{ __('Company') }}</label>
+                            <label for="status" class="col-md-4 col-form-label text-md-end">{{ __('Status') }}</label>
 
                             <div class="col-md-6">
-                                <input id="company" type="text" class="form-control @error('company') is-invalid @enderror" name="company" value="{{ old('company') }}" required autocomplete="company" autofocus>
-
-                                @error('company')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="job_title" class="col-md-4 col-form-label text-md-end">{{ __('JobTitle') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="job_title" type="text" class="form-control @error('job_title') is-invalid @enderror" name="job_title" value="{{ old('job_title') }}" required autocomplete="job_title" autofocus>
-
-                                @error('job_title')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="phone" class="col-md-4 col-form-label text-md-end">{{ __('Phone') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" autocomplete="phone" autofocus>
-
-                                @error('phone')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="home_phone" class="col-md-4 col-form-label text-md-end">{{ __('HomePhone') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="home_phone" type="text" class="form-control @error('home_phone') is-invalid @enderror" name="home_phone" value="{{ old('home_phone') }}" required autocomplete="home_phone" autofocus>
-
-                                @error('home_phone')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="address" class="col-md-4 col-form-label text-md-end">{{ __('Address') }}</label>
-
-                            <div class="col-md-6">
-                                <select id="address" class="form-select @error('address') is-invalid @enderror" aria-label="Default select example" name="address" value="{{ old('address') }}" required autocomplete="address" autofocus>
-                                    <option selected disabled>Select User Type</option>
-                                    <option value="Siem Reap">Siem Reap</option>
-                                    <option value="Phnom Penh">Phnom Penh</option>
+                                <select id="status" class="form-select @error('status') is-invalid @enderror" aria-label="Default select example" name="status" value="{{ old('status') }}" required autocomplete="status" autofocus>
+                                    <option selected disabled>Select Status</option>
+                                    <option value="Normal">Normal</option>
+                                    <option value="Hot">Hot</option>
                                 </select>
 
-                                @error('address')
+                                @error('status')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -152,76 +96,12 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="city" class="col-md-4 col-form-label text-md-end">{{ __('City') }}</label>
+                            <label for="item_image" class="col-md-4 col-form-label text-md-end">{{ __('Item Image') }}</label>
 
                             <div class="col-md-6">
-                                <select id="city" class="form-select @error('city') is-invalid @enderror" aria-label="Default select example" name="city" value="{{ old('city') }}" required autocomplete="userType" autofocus>
-                                    <option selected disabled>Select User Type</option>
-                                    <option value="Siem Reap">Siem Reap</option>
-                                    <option value="Phnom Penh">Phnom Penh</option>
-                                </select>
+                                <input id="item_image" type="file" class="form-control @error('item_image') is-invalid @enderror" name="item_image" value="{{ old('item_image') }}" autocomplete="item_image" autofocus>
 
-                                @error('city')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="state_province" class="col-md-4 col-form-label text-md-end">{{ __('StateProvince') }}</label>
-
-                            <div class="col-md-6">
-                                <select id="state_province" class="form-select @error('state_province') is-invalid @enderror" aria-label="Default select example" name="state_province" value="{{ old('state_province') }}" required autocomplete="state_province" autofocus>
-                                    <option selected disabled>Select User Type</option>
-                                    <option value="Siem Reap">Siem Reap</option>
-                                    <option value="Phnom Penh">User</option>
-                                </select>
-
-                                @error('state_province')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="zip_postal_code" class="col-md-4 col-form-label text-md-end">{{ __('ZipPostalCode') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="zip_postal_code" type="text" class="form-control @error('zip_postal_code') is-invalid @enderror" name="zip_postal_code" value="{{ old('zip_postal_code') }}" required autocomplete="zip_postal_code" autofocus>
-
-                                @error('zip_postal_code')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="country_region" class="col-md-4 col-form-label text-md-end">{{ __('CountryRegion') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="country_region" type="text" class="form-control @error('country_region') is-invalid @enderror" name="country_region" value="{{ old('country_region') }}" required autocomplete="country_region" autofocus>
-
-                                @error('country_region')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="photo" class="col-md-4 col-form-label text-md-end">{{ __('Photo') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="photo" type="file" class="form-control @error('photo') is-invalid @enderror" name="photo" value="{{ old('photo') }}" autocomplete="photo" autofocus>
-
-                                @error('photo')
+                                @error('item_image')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
