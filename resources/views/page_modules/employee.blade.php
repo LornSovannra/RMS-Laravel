@@ -71,7 +71,6 @@
                             <td class="align-middle"><span style="color: whitesmoke; background: #adb5bd; padding: 2px 7px; border-radius: 20px;">{{ $user->user_type }}</span></td>
                           @endif
 
-                          <td class="align-middle">{{ $user->user_type }}</td>
                           <td class="align-middle">{{ $user->role }}</td>
                           <td class="align-middle">{{ $user->company }}</td>
                           <td class="align-middle">{{ $user->job_title }}</td>

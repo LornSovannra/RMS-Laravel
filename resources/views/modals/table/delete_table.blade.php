@@ -13,13 +13,14 @@
                 <div class="text-center">
                     <input type="hidden" name="remove_id" id="remove_id">
     
-                    <h1>Are you sure you want to delete it?</h1>
-                    <img class="rounded mt-4" src="https://cdn.thinglink.me/api/image/459017412189093889/1024/10/scaletowidth/0/0/1/1/false/true?wait=true" alt="">
+                    <img class="rounded" style="width: 150px;" src="https://pngimg.com/uploads/exclamation_mark/exclamation_mark_PNG32.png" alt="">
+                    <h3 class="mt-4">Are you sure?</h3>
+                    <p>You won't be able to revert this!</p>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Delete</button>
+            <div class="modal-footer" style="justify-content: center;">
+                <button type="submit" class="btn btn-primary">Yes, delete it!</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
             </div>
             </div>
         </form>

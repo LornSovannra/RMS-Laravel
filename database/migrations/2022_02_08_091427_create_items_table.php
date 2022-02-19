@@ -17,8 +17,8 @@ class CreateItemsTable extends Migration
             $table->string("status");
             $table->string("item_image");
             
-            $table->foreign("category_id")->references("id")
-                -> on("categories") -> cascadeOnDelete("cascade");
+            /* $table->foreign("category_id")->references("id")
+                -> on("categories") -> cascadeOnDelete("cascade"); */
         });
     }
 

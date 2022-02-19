@@ -46,6 +46,7 @@
                             <div class="col-md-6">
                                 <select id="user_type" class="form-select @error('user_type') is-invalid @enderror" name="user_type" value="{{ old('user_type') }}" required autocomplete="user_type" autofocus>
                                     <option selected disabled>Select User Type</option>
+                                    <option value="Mediator">Mediator</option>
                                     <option value="User">User</option>
                                 </select>
 
@@ -133,9 +134,32 @@
 
                             <div class="col-md-6">
                                 <select it="address" class="form-select @error('address') is-invalid @enderror" aria-label="Default select example" name="address" value="{{ old('address') }}" required autocomplete="address" autofocus>
-                                    <option selected disabled>Select User Type</option>
-                                    <option value="Siem Reap">Siem Reap</option>
+                                    <option selected disabled>Select Address</option>
+                                    <option value="Banteay Meanchey">Banteay Meanchey</option>
+                                    <option value="Battambang">Battambang</option>
+                                    <option value="Kampong Chan">Kampong Chan</option>
+                                    <option value="Kampong Chnang">Kampong Chnang</option>
+                                    <option value="Kampong Speu">Kampong Speu</option>
+                                    <option value="Kampong Thom">Kampong Thom</option>
+                                    <option value="Kampot">Kampot</option>
+                                    <option value="Kandal">Kandal</option>
+                                    <option value="Kandal">Kandal</option>
+                                    <option value="Kratie">Kratie</option>
+                                    <option value="Mondulkiri">Mondulkiri</option>
                                     <option value="Phnom Penh">Phnom Penh</option>
+                                    <option value="Preah Vihear">Preah Vihear</option>
+                                    <option value="Prey Veng">Prey Veng</option>
+                                    <option value="Pursat">Pursat</option>
+                                    <option value="Ratanak Kiri">Ratanak Kiri</option>
+                                    <option value="Siem Reap">Siem Reap</option>
+                                    <option value="Preah Sihanouk">Preah Sihanouk</option>
+                                    <option value="Steung Treng">Steung Treng</option>
+                                    <option value="Svay Rieng">Svay Rieng</option>
+                                    <option value="Takeo">Takeo</option>
+                                    <option value="Oddar Meanchey">Oddar Meanchey</option>
+                                    <option value="Kep">Kep</option>
+                                    <option value="Pailin">Pailin</option>
+                                    <option value="Tboung Khmumn">Tboung Khmumn</option>
                                 </select>
 
                                 @error('address')
@@ -151,9 +175,32 @@
 
                             <div class="col-md-6">
                                 <select class="form-select @error('city') is-invalid @enderror" aria-label="Default select example" name="city" value="{{ old('city') }}" required autocomplete="userType" autofocus>
-                                    <option selected disabled>Select User Type</option>
-                                    <option value="Siem Reap">Siem Reap</option>
+                                    <option selected disabled>Select City</option>
+                                    <option value="Banteay Meanchey">Banteay Meanchey</option>
+                                    <option value="Battambang">Battambang</option>
+                                    <option value="Kampong Chan">Kampong Chan</option>
+                                    <option value="Kampong Chnang">Kampong Chnang</option>
+                                    <option value="Kampong Speu">Kampong Speu</option>
+                                    <option value="Kampong Thom">Kampong Thom</option>
+                                    <option value="Kampot">Kampot</option>
+                                    <option value="Kandal">Kandal</option>
+                                    <option value="Kandal">Kandal</option>
+                                    <option value="Kratie">Kratie</option>
+                                    <option value="Mondulkiri">Mondulkiri</option>
                                     <option value="Phnom Penh">Phnom Penh</option>
+                                    <option value="Preah Vihear">Preah Vihear</option>
+                                    <option value="Prey Veng">Prey Veng</option>
+                                    <option value="Pursat">Pursat</option>
+                                    <option value="Ratanak Kiri">Ratanak Kiri</option>
+                                    <option value="Siem Reap">Siem Reap</option>
+                                    <option value="Preah Sihanouk">Preah Sihanouk</option>
+                                    <option value="Steung Treng">Steung Treng</option>
+                                    <option value="Svay Rieng">Svay Rieng</option>
+                                    <option value="Takeo">Takeo</option>
+                                    <option value="Oddar Meanchey">Oddar Meanchey</option>
+                                    <option value="Kep">Kep</option>
+                                    <option value="Pailin">Pailin</option>
+                                    <option value="Tboung Khmumn">Tboung Khmumn</option>
                                 </select>
 
                                 @error('city')
@@ -169,9 +216,32 @@
 
                             <div class="col-md-6">
                                 <select id="state_province" class="form-select @error('state_province') is-invalid @enderror" aria-label="Default select example" name="state_province" value="{{ old('state_province') }}" required autocomplete="state_province" autofocus>
-                                    <option selected disabled>Select User Type</option>
+                                    <option selected disabled>Select State/Province</option>
+                                    <option value="Banteay Meanchey">Banteay Meanchey</option>
+                                    <option value="Battambang">Battambang</option>
+                                    <option value="Kampong Chan">Kampong Chan</option>
+                                    <option value="Kampong Chnang">Kampong Chnang</option>
+                                    <option value="Kampong Speu">Kampong Speu</option>
+                                    <option value="Kampong Thom">Kampong Thom</option>
+                                    <option value="Kampot">Kampot</option>
+                                    <option value="Kandal">Kandal</option>
+                                    <option value="Kandal">Kandal</option>
+                                    <option value="Kratie">Kratie</option>
+                                    <option value="Mondulkiri">Mondulkiri</option>
+                                    <option value="Phnom Penh">Phnom Penh</option>
+                                    <option value="Preah Vihear">Preah Vihear</option>
+                                    <option value="Prey Veng">Prey Veng</option>
+                                    <option value="Pursat">Pursat</option>
+                                    <option value="Ratanak Kiri">Ratanak Kiri</option>
                                     <option value="Siem Reap">Siem Reap</option>
-                                    <option value="Phnom Penh">User</option>
+                                    <option value="Preah Sihanouk">Preah Sihanouk</option>
+                                    <option value="Steung Treng">Steung Treng</option>
+                                    <option value="Svay Rieng">Svay Rieng</option>
+                                    <option value="Takeo">Takeo</option>
+                                    <option value="Oddar Meanchey">Oddar Meanchey</option>
+                                    <option value="Kep">Kep</option>
+                                    <option value="Pailin">Pailin</option>
+                                    <option value="Tboung Khmumn">Tboung Khmumn</option>
                                 </select>
 
                                 @error('state_province')

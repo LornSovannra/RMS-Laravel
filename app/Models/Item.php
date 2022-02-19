@@ -11,8 +11,8 @@ class Item extends Model
 
     public $timestamps = false;
 
-    public function order_detail()
+    public function orders()
     {
-        return $this->hasMany(OrderDetail::class, "item_id");
+        return $this->belongsToMany(Order::class, "order_details");
     }
 }

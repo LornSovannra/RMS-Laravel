@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CategoryFormRequest;
 use App\Models\Category;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -25,7 +26,7 @@ class CategoryController extends Controller
         }
     }
 
-    public function Create(Request $request){
+    public function Create(CategoryFormRequest $request){
         if($request -> hasFile("category_image") && $request -> file("category_image") -> isValid())
         {
             $file = time() . "." . $request -> file("category_image") -> getClientOriginalExtension();
@@ -61,7 +62,7 @@ class CategoryController extends Controller
         ]);
     }
 
-    public function Update(Request $req){
+    public function Update(CategoryFormRequest $req){
         $category = Category::findOrFail($req->id);
         $category -> category_name = $req -> category_name;
         $category -> status = $req -> status;

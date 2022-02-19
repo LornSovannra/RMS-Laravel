@@ -67,7 +67,7 @@
 
                             <div class="col-md-6">
                                 
-                                <input id="unit_price" type="number" class="form-control @error('unit_price') is-invalid @enderror" name="unit_price" value="{{ old('unit_price') }}" required autocomplete="unit_price" autofocus>
+                                <input id="unit_price" type="number" step="any" class="form-control @error('unit_price') is-invalid @enderror" name="unit_price" value="{{ old('unit_price') }}" required autocomplete="unit_price" autofocus>
 
                                 @error('unit_price')
                                     <span class="invalid-feedback" role="alert">

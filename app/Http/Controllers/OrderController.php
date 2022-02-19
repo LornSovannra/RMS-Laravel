@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\OrderFormRequest;
 use App\Models\Order;
 use App\Models\Table;
 use App\Models\User;
@@ -28,7 +29,7 @@ class OrderController extends Controller
         }
     }
 
-    public function Create(Request $request){
+    public function Create(OrderFormRequest $request){
         $order = new Order();
         $order->employee_id = $request->employee_id;
         $order->order_date = $request->order_date;
@@ -58,7 +59,7 @@ class OrderController extends Controller
         ]);
     }
 
-    public function Update(Request $req){
+    public function Update(OrderFormRequest $req){
         $order = Order::findOrFail($req->id);
         $order -> employee_id = $req -> employee_id;
 

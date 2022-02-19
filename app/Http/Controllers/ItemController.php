@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ItemFormRequest;
 use App\Models\Category;
 use App\Models\Item;
 use App\Models\User;
@@ -27,7 +28,7 @@ class ItemController extends Controller
         }
     }
 
-    public function Create(Request $request){
+    public function Create(ItemFormRequest $request){
         if($request -> hasFile("item_image") && $request -> file("item_image") -> isValid())
         {
             $file = time() . "." . $request -> file("item_image") -> getClientOriginalExtension();
@@ -66,7 +67,7 @@ class ItemController extends Controller
         ]);
     }
 
-    public function Update(Request $req){
+    public function Update(ItemFormRequest $req){
         $item = Item::findOrFail($req->id);
         $item -> item_name = $req -> item_name;
         $item -> description = $req -> description;

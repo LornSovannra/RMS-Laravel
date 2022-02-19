@@ -11,7 +11,7 @@ class Category extends Model
 
     public $timestamps = false;
 
-    public function item()
+    public function items()
     {
         return $this->hasMany(Item::class, "category_id");
     }

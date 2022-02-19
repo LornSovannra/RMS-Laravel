@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\OrderDetailFormRequest;
 use App\Models\Item;
 use App\Models\Order;
 use App\Models\OrderDetail;
@@ -29,11 +30,11 @@ class OrderDetailController extends Controller
         }
     }
 
-    public function Create(Request $request){
+    public function Create(OrderDetailFormRequest $request){
         $order_detail = new OrderDetail();
         $order_detail->order_id = $request->order_id;
         $order_detail->item_id = $request->item_id;
-        $order_detail->QtyOrder = $request->qty_order;
+        $order_detail->qty_order = $request->qty_order;
         $order_detail->save();
 
         return redirect("/order-detail")->with("order_detail_created", "Order detail created!");
@@ -57,11 +58,11 @@ class OrderDetailController extends Controller
         ]);
     }
 
-    public function Update(Request $req){
+    public function Update(OrderDetailFormRequest $req){
         $order_detail = OrderDetail::findOrFail($req->id);
         $order_detail -> order_id = $req -> order_id;
         $order_detail -> item_id = $req -> item_id;
-        $order_detail -> QtyOrder = $req -> qty_order;
+        $order_detail -> qty_order = $req -> qty_order;
         $order_detail -> save();
 
         return redirect("/order-detail")->with("order_detail_updated", "Order detail updated");

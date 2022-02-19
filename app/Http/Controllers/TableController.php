@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TableFormRequest;
 use App\Models\Table;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -25,7 +26,7 @@ class TableController extends Controller
         }
     }
 
-    public function Create(Request $request){
+    public function Create(TableFormRequest $request){
         $table = new Table();
         $table->table_name = $request->table_name;
         $table->description = $request->description;
@@ -53,7 +54,7 @@ class TableController extends Controller
         ]);
     }
 
-    public function Update(Request $req){
+    public function Update(TableFormRequest $req){
         $table = Table::findOrFail($req->id);
         $table -> table_name = $req -> table_name;
         $table -> description = $req -> description;
