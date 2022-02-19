@@ -53,11 +53,17 @@
                     @foreach ($items as $item)    
                         <tr>
                           <th scope="row" class="align-middle">{{ $item->id }}</th>
-                          <td class="align-middle">{{ $item->item_name }}</td>
+                          <td class="align-middle" style="color: #1c5d99;">{{ $item->item_name }}</td>
                           <td class="align-middle">{{ $item->description }}</td>
                           <td class="align-middle">{{ $item->category_id }}</td>
                           <td class="align-middle">{{ $item->unit_price }}</td>
-                          <td class="align-middle">{{ $item->status }}</td>
+
+                          @if ($item->status == "Hot" )
+                            <td class="align-middle"><span style="color: whitesmoke; background: #ff6700; padding: 2px 7px; border-radius: 20px;">{{ $item->status }}</span></td>
+                          @else
+                            <td class="align-middle"><span style="color: whitesmoke; background: #1f7a8c; padding: 2px 7px; border-radius: 20px;">{{ $item->status }}</span></td>
+                          @endif
+                          
                           <td>
                               <img class="rounded" style="width: 100px; height: 100px; object-fit: cover;" src="item_images/{{ $item->item_image }}" alt="{{ $item->item_image }}">
                           </td>

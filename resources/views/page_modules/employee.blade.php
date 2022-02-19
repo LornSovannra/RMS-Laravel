@@ -17,7 +17,7 @@
                 {{ session()->get('employee_deleted') }}
             </div>
         @endif
-        <div {{-- class="d-flex justify-content-between" --}} style="display: flex; align-items: center; justify-content: space-between;">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
             <h1>Employee</h1>
 
             <!-- Button trigger modal -->
@@ -60,8 +60,17 @@
                     @foreach ($users as $user)    
                         <tr>
                           <th scope="row" class="align-middle">{{ $user->id }}</th>
-                          <td class="align-middle">{{ $user->name }}</td>
+                          <td class="align-middle" style="color: #1c5d99;">{{ $user->name }}</td>
                           <td class="align-middle">{{ $user->email }}</td>
+
+                          @if ($user->user_type == "Admin" )
+                            <td class="align-middle"><span style="color: whitesmoke; background: #ffc600; padding: 2px 7px; border-radius: 20px;">{{ $user->user_type }}</span></td>
+                          @elseif ($user->user_type == "Mediator")
+                            <td class="align-middle"><span style="color: whitesmoke; background: #52b788; padding: 2px 7px; border-radius: 20px;">{{ $user->user_type }}</span></td>
+                          @else
+                            <td class="align-middle"><span style="color: whitesmoke; background: #adb5bd; padding: 2px 7px; border-radius: 20px;">{{ $user->user_type }}</span></td>
+                          @endif
+
                           <td class="align-middle">{{ $user->user_type }}</td>
                           <td class="align-middle">{{ $user->role }}</td>
                           <td class="align-middle">{{ $user->company }}</td>

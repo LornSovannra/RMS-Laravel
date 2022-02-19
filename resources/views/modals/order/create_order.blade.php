@@ -52,9 +52,10 @@
 
                             <div class="col-md-6">
                                 <select id="status" class="form-select @error('status') is-invalid @enderror" aria-label="Default select example" name="status" value="{{ old('status') }}" required autocomplete="status" autofocus>
-                                    <option selected disabled>Select Item ID</option>
-                                    <option value="Hot">Hot</option>
-                                    <option value="Normal">Normal</option>
+                                    <option selected disabled>Select Status</option>
+                                    <option value="Pending">Pending</option>
+                                    <option value="Approved">Approved</option>
+                                    <option value="Refunded">Refunded</option>
                                 </select>
 
                                 @error('status')

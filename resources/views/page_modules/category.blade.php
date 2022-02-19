@@ -49,8 +49,14 @@
                     @foreach ($categories as $category)    
                         <tr>
                           <th scope="row" class="align-middle">{{ $category->id }}</th>
-                          <td class="align-middle">{{ $category->category_name }}</td>
-                          <td class="align-middle">{{ $category->status }}</td>
+                          <td class="align-middle" style="color: #1c5d99;">{{ $category->category_name }}</td>
+
+                          @if ($category->status == "Hot" )
+                            <td class="align-middle"><span style="color: whitesmoke; background: #ff6700; padding: 2px 7px; border-radius: 20px;">{{ $category->status }}</span></td>
+                          @else
+                            <td class="align-middle"><span style="color: whitesmoke; background: #1f7a8c; padding: 2px 7px; border-radius: 20px;">{{ $category->status }}</span></td>
+                          @endif
+
                           <td>
                               <img class="rounded" style="width: 200px; height: 100px; object-fit: cover;" src="category_images/{{ $category->category_image }}" alt="{{ $category->category_image }}">
                           </td>

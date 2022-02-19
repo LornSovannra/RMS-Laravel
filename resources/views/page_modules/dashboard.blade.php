@@ -1,5 +1,5 @@
 <section>  
-    <div style="background: white; border-radius: 10px;">
+    <div style="background: white; border-radius: 10px; padding: 20px;">
         @if(session()->has('changed_password_successfully'))
             <div style="border-radius: 10px" class="alert alert-primary" role="alert">
                 {{ session()->get('changed_password_successfully') }}
@@ -12,6 +12,14 @@
             </div>
         @endif
 
-        <div id="piechart_3d" style="width: 900px; height: 500px; margin: 20px;"></div>
+        <div style="display: flex; margin-top: 20px;">
+            <div id="columnchart_material" style="width: 700px; height: 400px;"></div>
+            <div id="donutchart" style="width: 700px; height: 300px;"></div>
+        </div>
+
+        <div style="display: flex; margin-top: 20px;">
+            <div id="piechart" style="width: 700px; height: 300px;"></div>
+            <div id="barchart_material" style="width: 700px; height: 400px;"></div>
+        </div>
     </div>
 </section>

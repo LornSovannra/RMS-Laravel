@@ -49,9 +49,15 @@
                     @foreach ($tables as $table)    
                         <tr>
                           <th scope="row" class="align-middle">{{ $table->id }}</th>
-                          <td class="align-middle">{{ $table->table_name }}</td>
+                          <td class="align-middle" style="color: #1c5d99;">{{ $table->table_name }}</td>
                           <td class="align-middle">{{ $table->description }}</td>
-                          <td class="align-middle">{{ $table->status }}</td>
+
+                          @if ($table->status == "VIP" )
+                            <td class="align-middle"><span style="color: whitesmoke; background: #ffd100; padding: 2px 7px; border-radius: 20px;">{{ $table->status }}</span></td>
+                          @else
+                            <td class="align-middle"><span style="color: whitesmoke; background: #1f7a8c; padding: 2px 7px; border-radius: 20px;">{{ $table->status }}</span></td>
+                          @endif
+                          
                           <td class="align-middle">
                             <div class="d-flex gap-2">
                               <button value="{{ $table->id }}" class="view_btn" onMouseOver="this.style.color='#40916c'" onMouseOut="this.style.color='#000'" style="border: none; background: transparent;"><i class="far fa-eye" style="font-size: 20px;"></i></button>

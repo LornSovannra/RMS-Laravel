@@ -1,8 +1,8 @@
 <aside style="background: white; border-radius: 10px;">
     <nav style=" list-style: none;">
         <a class="nav_a" href="{{ route("dashboard") }}" style="text-decoration: none; {{ Request::segment(1) == '' ? 'color: white;' : 'color: black;' }}">
-            <li class="nav_a_li" style="padding: 10px 0 10px 20px; border-radius: 10px; {{ Request::segment(1) == '' ? 'background: green;' : 'background: white;' }}">
-                Dashboard
+            <li class="nav_a_li" style="display: flex; padding: 10px 0 10px 20px; border-radius: 10px; {{ Request::segment(1) == '' ? 'background: green;' : 'background: white;' }}">
+                <div>Dashboard</div>
             </li>
         </a>
         <a class="nav_a" href="{{ route("order_detail_home") }}" style="text-decoration: none; {{ Request::segment(1) == 'order-detail' ? 'color: white;' : 'color: black;' }}">

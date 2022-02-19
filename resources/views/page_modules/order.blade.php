@@ -53,7 +53,15 @@
                           <th scope="row" class="align-middle">{{ $order->id }}</th>
                           <td class="align-middle">{{ $order->employee_id }}</td>
                           <td class="align-middle">{{ $order->order_date }}</td>
-                          <td class="align-middle">{{ $order->status }}</td>
+
+                          @if ($order->status == "Approved" )
+                            <td class="align-middle"><span style="color: whitesmoke; background: #52b788; padding: 2px 7px; border-radius: 20px;">{{ $order->status }}</span></td>
+                          @elseif ($order->status == "Refunded")
+                            <td class="align-middle"><span style="color: whitesmoke; background: #ffc600; padding: 2px 7px; border-radius: 20px;">{{ $order->status }}</span></td>
+                          @else
+                            <td class="align-middle"><span style="color: whitesmoke; background: #adb5bd; padding: 2px 7px; border-radius: 20px;">{{ $order->status }}</span></td>
+                          @endif
+                          
                           <td class="align-middle">{{ $order->print_qty }}</td>
                           <td class="align-middle">{{ $order->table_id }}</td>
                           <td class="align-middle">
