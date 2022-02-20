@@ -37,7 +37,7 @@
         <div class="text-nowrap" style="overflow-y: hidden; margin-top: 20px;">
             <table class="table table-striped">
                 <thead>
-                  <tr>
+                  <tr style="color: #2d6a4f;">
                     <th scope="col">ID</th>
                     <th scope="col">Name</th>
                     <th scope="col">Email</th>

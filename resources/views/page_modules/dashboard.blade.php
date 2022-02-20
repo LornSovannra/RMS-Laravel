@@ -12,14 +12,111 @@
             </div>
         @endif
 
-        <div style="display: flex; margin-top: 20px;">
-            <div id="columnchart_material" style="width: 700px; height: 400px;"></div>
-            <div id="donutchart" style="width: 700px; height: 300px;"></div>
+        <div>
+            <div class="row gap-3" style="padding: 0 10px; color: white;">
+                <div style="background: #023e8a; border-radius: 10px; box-shadow: 0px 0px 6px 0px rgba(0, 153, 255, 0.16);" class="pt-2 pb-2 col-xs-12 col-sm-12 col-md-4 col-lg-3 col-xl-3">
+                    <div><p>Order Detail</p></div>
+                    <div><p style="text-align: right; font-size: 20px;">{{ $num_of_order_detail }}</p></div>
+                </div>
+                <div style="background: #d90429; border-radius: 10px; box-shadow: 0px 0px 6px 0px rgba(0, 153, 255, 0.16);" class="pt-2 pb-2 col-xs-12 col-sm-12 col-md-4 col-lg-3 col-xl-3">
+                    <div><p>Order</p></div>
+                    <div><p style="text-align: right; font-size: 20px;">{{ $num_of_order }}</p></div>
+                </div>
+                <div style="background: #f77f00; border-radius: 10px; box-shadow: 0px 0px 6px 0px rgba(0, 153, 255, 0.16);" class="pt-2 pb-2 col-xs-12 col-sm-12 col-md-4 col-lg-3 col-xl-3">
+                    <div><p>Item</p></div>
+                    <div><p style="text-align: right; font-size: 20px;">{{ $num_od_item }}</p></div>
+                </div>
+                <div style="background: #ff4d6d; border-radius: 10px; box-shadow: 0px 0px 6px 0px rgba(0, 153, 255, 0.16);" class="pt-2 pb-2 col-xs-12 col-sm-12 col-md-4 col-lg-3 col-xl-3">
+                    <div><p>Table</p></div>
+                    <div><p style="text-align: right; font-size: 20px;">{{ $num_of_table }}</p></div>
+                </div>
+                <div style="background: #8338ec; border-radius: 10px; box-shadow: 0px 0px 6px 0px rgba(0, 153, 255, 0.16);" class="pt-2 pb-2 col-xs-12 col-sm-12 col-md-4 col-lg-3 col-xl-3">
+                    <div><p>Category</p></div>
+                    <div><p style="text-align: right; font-size: 20px;">{{ $num_of_categorie }}</p></div>
+                </div>
+                <div style="background: #38b000; border-radius: 10px; box-shadow: 0px 0px 6px 0px rgba(0, 153, 255, 0.16);" class="pt-2 pb-2 col-xs-12 col-sm-12 col-md-4 col-lg-3 col-xl-3">
+                    <div><p>Employee</p></div>
+                    <div><p style="text-align: right; font-size: 20px;">{{ $num_of_employee }}</p></div>
+                </div>
+            </div>
         </div>
 
-        <div style="display: flex; margin-top: 20px;">
+        <div class="row justify-content-between mt-5" style="padding: 0 10px;">
+            <div class="text-nowrap col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8" style="overflow-y: hidden; margin-top: 20px; padding: 10px; box-shadow: 0px 0px 6px 0px rgba(0, 153, 255, 0.16);">
+                <h3 style="font-weight: 600; color: #2d6a4f;">Recent Order</h3>
+                <table class="table table-striped mt-2">
+                    <thead>
+                      <tr style="color: #2d6a4f;">
+                        <th scope="col">ID</th>
+                        <th scope="col">Employee ID</th>
+                        <th scope="col">Order Date</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Print Qty</th>
+                        <th scope="col">Table ID</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($orders as $order)    
+                            <tr>
+                              <th scope="row" class="align-middle">{{ $order->id }}</th>
+                              <td class="align-middle">{{ $order->employee_id }}</td>
+                              <td class="align-middle">{{ $order->order_date }}</td>
+    
+                              @if ($order->status == "Approved" )
+                                <td class="align-middle"><span style="color: whitesmoke; background: #52b788; padding: 2px 7px; border-radius: 20px;">{{ $order->status }}</span></td>
+                              @elseif ($order->status == "Refunded")
+                                <td class="align-middle"><span style="color: whitesmoke; background: #ffc600; padding: 2px 7px; border-radius: 20px;">{{ $order->status }}</span></td>
+                              @else
+                                <td class="align-middle"><span style="color: whitesmoke; background: #adb5bd; padding: 2px 7px; border-radius: 20px;">{{ $order->status }}</span></td>
+                              @endif
+                              
+                              <td class="align-middle">{{ $order->print_qty }}</td>
+                              <td class="align-middle">{{ $order->table_id }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                  </table>
+                  {{ $orders->links() }}
+            </div>
+
+            <div class="text-nowrap col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3" style="overflow-y: hidden; margin-top: 20px; padding: 10px; box-shadow: 0px 0px 6px 0px rgba(0, 153, 255, 0.16);">
+                <h3 style="font-weight: 600; color: #2d6a4f;">Recent Order Detail</h3>
+                <table class="table table-striped mt-2">
+                    <thead>
+                      <tr style="color: #2d6a4f;">
+                        <th scope="col">ID</th>
+                        <th scope="col">Order ID</th>
+                        <th scope="col">Item ID</th>
+                        <th scope="col">Qty Order</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($order_details as $order_detail)    
+                            <tr>
+                              <th scope="row" class="align-middle">{{ $order_detail->id }}</th>
+                              <td class="align-middle">{{ $order_detail->order_id }}</td>
+                              <td class="align-middle">{{ $order_detail->item_id }}</td>
+                              <td class="align-middle">{{ $order_detail->qty_order }}</td>
+                              {{-- Edit Modal --}}
+                              @include('modals.order_detail.edit_order_detail')
+                            </tr>
+                            {{-- Delete Modal --}}
+                            @include('modals.order_detail.delete_order_detail')
+                        @endforeach
+                    </tbody>
+                  </table>
+                  {{ $order_details->links() }}
+            </div>
+        </div>
+
+        {{-- <div style="display: flex; margin-top: 20px;">
+            <div id="columnchart_material" style="width: 700px; height: 400px;"></div>
+            <div id="donutchart" style="width: 700px; height: 300px;"></div>
+        </div> --}}
+
+        {{-- <div style="display: flex; margin-top: 20px;">
             <div id="piechart" style="width: 700px; height: 300px;"></div>
             <div id="barchart_material" style="width: 700px; height: 400px;"></div>
-        </div>
+        </div> --}}
     </div>
 </section>

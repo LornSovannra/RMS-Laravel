@@ -38,11 +38,12 @@
         <div class="text-nowrap" style="overflow-y: hidden; margin-top: 20px;">
             <table class="table table-striped">
                 <thead>
-                  <tr>
+                  <tr style="color: #2d6a4f;">
                     <th scope="col">ID</th>
                     <th scope="col">Order ID</th>
                     <th scope="col">Item ID</th>
                     <th scope="col">Qty Order</th>
+                    <th scope="col">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -51,7 +52,7 @@
                           <th scope="row" class="align-middle">{{ $order_detail->id }}</th>
                           <td class="align-middle">{{ $order_detail->order_id }}</td>
                           <td class="align-middle">{{ $order_detail->item_id }}</td>
-                          <td class="align-middle">{{ $order_detail->QtyOrder }}</td>
+                          <td class="align-middle">{{ $order_detail->qty_order }}</td>
                           <td class="align-middle">
                             <div class="d-flex gap-2">
                               <button value="{{ $order_detail->id }}" class="view_btn" onMouseOver="this.style.color='#40916c'" onMouseOut="this.style.color='#000'" style="border: none; background: transparent;"><i class="far fa-eye" style="font-size: 20px;"></i></button>

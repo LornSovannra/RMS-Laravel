@@ -38,13 +38,14 @@
         <div class="text-nowrap" style="overflow-y: hidden; margin-top: 20px;">
             <table class="table table-striped">
                 <thead>
-                  <tr>
+                  <tr style="color: #2d6a4f;">
                     <th scope="col">ID</th>
                     <th scope="col">Employee ID</th>
                     <th scope="col">Order Date</th>
                     <th scope="col">Status</th>
                     <th scope="col">Print Qty</th>
                     <th scope="col">Table ID</th>
+                    <th scope="col">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
