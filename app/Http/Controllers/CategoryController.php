@@ -14,16 +14,9 @@ class CategoryController extends Controller
         $authID = Auth::id();
         $auth = User::find($authID);
 
-        if(empty($request->all())){
-            $categories = Category::simplePaginate(10);
+        $categories = Category::get();
 
-            return view("pages.category", compact("categories", "auth"));
-        }else{
-            $categories = Category::where("category_name", "LIKE", "%" . $request->search_category . "%")->orWhere("status", "LIKE", "%" . $request->search_category . "%")->simplePaginate(10);
-            $categories->appends($request->all());
-
-            return view('pages.category', compact("categories", "auth"));
-        }
+        return view("pages.category", compact("categories", "auth"));
     }
 
     public function Create(CategoryFormRequest $request){

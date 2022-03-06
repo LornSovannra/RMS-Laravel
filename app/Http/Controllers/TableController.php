@@ -14,16 +14,9 @@ class TableController extends Controller
         $authID = Auth::id();
         $auth = User::find($authID);
 
-        if(empty($request->all())){
-            $tables = Table::simplePaginate(10);
+        $tables = Table::get();
 
-            return view("pages.table", compact("tables", "auth"));
-        }else{
-            $tables = Table::where("table_name", "LIKE", "%" . $request->search_table . "%")->orWhere("status", "LIKE", "%" . $request->search_table . "%")->simplePaginate(10);
-            $tables->appends($request->all());
-
-            return view('pages.table', compact("tables", "auth"));
-        }
+         return view("pages.table", compact("tables", "auth"));
     }
 
     public function Create(TableFormRequest $request){

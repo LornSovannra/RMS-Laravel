@@ -21,11 +21,11 @@ class HomeController extends Controller
 
     public function index(Request $request)
     {
-        $orders = Order::simplePaginate(10);
+        $orders = Order::paginate(10, ['*'], 'orders');
+        $items = Item::get();
 
         //Fix here
-        $order_details = OrderDetail::simplePaginate(10);
-        $items = Item::get();
+        $order_details = OrderDetail::paginate(10, ['*'], 'order_details');
         //End
         
         $authID = Auth::id();
@@ -33,12 +33,12 @@ class HomeController extends Controller
 
         $num_of_order_detail = count(OrderDetail::all());
         $num_of_order = count(Order::all());
-        $num_od_item = count(Item::all());
+        $num_of_item = count(Item::all());
         $num_of_table = count(Table::all());
         $num_of_categorie = count(Category::all());
         $num_of_employee = count(User::all());
 
-        return view('welcome', compact("orders", "order_details", "items", "auth", "num_of_order_detail", "num_of_order", "num_od_item", "num_of_table", "num_of_categorie", "num_of_employee"));
+        return view('welcome', compact("orders", "order_details", "items", "auth", "num_of_order_detail", "num_of_order", "num_of_item", "num_of_table", "num_of_categorie", "num_of_employee"));
     }
 
     public function ChangePassword(Request $request){
@@ -46,8 +46,15 @@ class HomeController extends Controller
         $user = User::findOrFail($id);
         $password_verified = Hash::check($request->current_password, $user->password);
 
+        $request->validate([
+            'current_password' => ["required", "min:8", "max:100"],
+            'password' => ["required", "min:8", "max:100", "confirmed"],
+            'password_confirmation' => ["required"]
+        ]);
+
         if($password_verified){
-            $user->password = Hash::make($request->new_password);
+
+            $user->password = Hash::make($request->password);
             $user->save();
 
             return redirect("/")->with("changed_password_successfully", "Changed password successfully!");

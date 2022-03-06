@@ -25,17 +25,9 @@
                 Create New Employee
             </button>
         </div>
-
-        <form action="{{ route("search_employee") }}" method="get">
-            @csrf
-            <div style="display: flex; align-items: center; margin-top: 40px; padding: 5px 10px; border-radius: 10px; border: 1px solid green; border-radius: 10px;">
-                <i class="fas fa-search" style="margin-right: 10px;"></i>
-                <input name="search_employee" type="text" placeholder="Search Employee" style="width: 100%; border: none; outline: none;">
-            </div>
-        </form>
     
         <div class="text-nowrap" style="overflow-y: hidden; margin-top: 20px;">
-            <table class="table table-striped">
+            <table class="table table-striped" id="myDataTable">
                 <thead>
                   <tr style="color: #2d6a4f;">
                     <th scope="col">ID</th>
@@ -101,7 +93,6 @@
                     @endforeach
                 </tbody>
               </table>
-              {{ $users->links() }}
         </div>
     </div>
     <div>

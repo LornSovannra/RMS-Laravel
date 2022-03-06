@@ -32,9 +32,9 @@
                             <label for="new_password" class="col-md-4 col-form-label text-md-end">{{ __('New Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="new_password" type="password" class="form-control @error('new_password') is-invalid @enderror" name="new_password" value="{{ old('new_password') }}" required autocomplete="new_password" autofocus>
+                                <input id="new_password" type="password" class="form-control @error('new_password') is-invalid @enderror" name="password" value="{{ old('new_password') }}" required autocomplete="new_password" autofocus>
 
-                                @error('new_password')
+                                @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -46,9 +46,9 @@
                             <label for="confirm_new_password" class="col-md-4 col-form-label text-md-end">{{ __('Confirm New Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="confirm_new_password" type="password" class="form-control @error('confirm_new_password') is-invalid @enderror" name="confirm_new_password" value="{{ old('confirm_new_password') }}" required autocomplete="confirm_new_password" autofocus>
+                                <input id="confirm_new_password" type="password" class="form-control @error('confirm_new_password') is-invalid @enderror" name="password_confirmation" value="{{ old('confirm_new_password') }}" required autocomplete="confirm_new_password" autofocus>
 
-                                @error('confirm_new_password')
+                                @error('password_confirmation')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

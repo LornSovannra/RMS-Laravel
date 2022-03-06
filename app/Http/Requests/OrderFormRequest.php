@@ -15,7 +15,6 @@ class OrderFormRequest extends FormRequest
     {
         return [
             'employee_id' => ['required'],
-            'order_date' => ['required'],
             'status' => ['required'],
             'print_qty' => ['required'],
             'table_id' => ['required'],

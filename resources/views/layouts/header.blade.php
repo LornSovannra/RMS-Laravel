@@ -1,7 +1,7 @@
 <header style="background: #2d6a4f; padding: 0 30px;">
     <div style="color: white; align-items: center; display: grid; grid-template-columns: 350px auto;">
         <div style="display: flex; align-items: center;">
-            <h1>LOGO</h1>
+            <h1>Deli Food</h1>
         </div>
         <div style="display: flex; justify-content: space-between; align-items: center;">
             <div>

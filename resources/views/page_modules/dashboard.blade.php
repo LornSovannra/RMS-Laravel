@@ -34,7 +34,7 @@
                     <div style="background: #f77f00; border-radius: 10px; box-shadow: 0px 0px 6px 0px rgba(0, 153, 255, 0.16);">
                         <div style="margin: 0 10px;">
                             <div><p>Item</p></div>
-                            <div><p style="text-align: right; font-size: 20px;">{{ $num_od_item }}</p></div>
+                            <div><p style="text-align: right; font-size: 20px;">{{ $num_of_item }}</p></div>
                         </div>
                     </div>
                 </div>
@@ -101,7 +101,7 @@
                             @endforeach
                         </tbody>
                       </table>
-                      {{ $orders->links() }}
+                      {{ $orders->appends(["order_details" => $order_details->currentPage()])->links() }}
                 </div>
             </div>
 
@@ -132,19 +132,9 @@
                             @endforeach
                         </tbody>
                       </table>
-                      {{ $order_details->links() }}
+                      {{ $order_details->appends(["orders" => $orders->currentPage()])->links() }}
                 </div>
             </div>
         </div>
-
-        {{-- <div style="display: flex; margin-top: 20px;">
-            <div id="columnchart_material" style="width: 700px; height: 400px;"></div>
-            <div id="donutchart" style="width: 700px; height: 300px;"></div>
-        </div> --}}
-
-        {{-- <div style="display: flex; margin-top: 20px;">
-            <div id="piechart" style="width: 700px; height: 300px;"></div>
-            <div id="barchart_material" style="width: 700px; height: 400px;"></div>
-        </div> --}}
     </div>
 </section>

@@ -26,23 +26,15 @@
                 Create New Item
             </button>
         </div>
-
-        <form action="{{ route("search_item") }}" method="get">
-            @csrf
-            <div style="display: flex; align-items: center; margin-top: 40px; padding: 5px 10px; border-radius: 10px; border: 1px solid green; border-radius: 10px;">
-                <i class="fas fa-search" style="margin-right: 10px;"></i>
-                <input name="search_item" type="text" placeholder="Search Item" style="width: 100%; border: none; outline: none;">
-            </div>
-        </form>
     
         <div class="text-nowrap" style="overflow-y: hidden; margin-top: 20px;">
-            <table class="table table-striped">
+            <table class="table table-striped" id="myDataTable">
                 <thead>
                   <tr style="color: #2d6a4f;">
                     <th scope="col">ID</th>
                     <th scope="col">Item Name</th>
                     <th scope="col">Description</th>
-                    <th scope="col">Category ID</th>
+                    <th scope="col">Category Name</th>
                     <th scope="col">Unit Price</th>
                     <th scope="col">Status</th>
                     <th scope="col">Item Image</th>
@@ -55,8 +47,8 @@
                           <th scope="row" class="align-middle">{{ $item->id }}</th>
                           <td class="align-middle" style="color: #1c5d99;">{{ $item->item_name }}</td>
                           <td class="align-middle">{{ $item->description }}</td>
-                          <td class="align-middle">{{ $item->category_id }}</td>
-                          <td class="align-middle">{{ $item->unit_price }}</td>
+                          <td class="align-middle">{{ $item->category_name }}</td>
+                          <td class="align-middle">${{ $item->unit_price }}</td>
 
                           @if ($item->status == "Hot" )
                             <td class="align-middle"><span style="color: whitesmoke; background: #ff6700; padding: 2px 7px; border-radius: 20px;">{{ $item->status }}</span></td>
@@ -82,7 +74,6 @@
                     @endforeach
                 </tbody>
               </table>
-              {{ $items->links() }}
         </div>
     </div>
     <div>

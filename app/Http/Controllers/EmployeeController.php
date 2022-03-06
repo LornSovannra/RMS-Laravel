@@ -14,16 +14,9 @@ class EmployeeController extends Controller
         $authID = Auth::id();
         $auth = User::find($authID);
 
-        if(empty($request->all())){
-            $users = User::simplePaginate(10);
+        $users = User::get();
 
-            return view("pages.employee", compact("users", "auth"));
-        }else{
-            $users = User::where("name", "LIKE", "%" . $request->search_employee . "%")->orWhere("email", "LIKE", "%" . $request->search_employee . "%")->simplePaginate(2);
-            $users->appends($request->all());
-
-            return view('pages.employee', compact("users", "auth"));
-        }
+        return view("pages.employee", compact("users", "auth"));
     }
 
     public function Create(EmployeeFormRequest $req){

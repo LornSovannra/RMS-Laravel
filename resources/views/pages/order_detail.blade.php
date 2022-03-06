@@ -15,6 +15,8 @@
 
         {{-- Font Awesome --}}
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" >
+
+        {{-- <link rel="stylesheet" href="//cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css"> --}}
     </head>
     <body style="background: whitesmoke;">
         @include('layouts.header')
@@ -75,6 +77,17 @@
               })
             })
           })
+
+          /* $(document).ready( function () {
+            $('#myDataTable').DataTable();
+        } ); */
       </script>
+
+      {{-- <script src="//cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script> --}}
+      {{-- <script>
+        $(document).ready( function () {
+            $('#myDataTable').DataTable();
+        } );
+      </script> --}}
     </body>
 </html>

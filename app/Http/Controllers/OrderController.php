@@ -17,16 +17,9 @@ class OrderController extends Controller
         $employees = User::get();
         $tables = Table::get();
 
-        if(empty($request->all())){
-            $orders = Order::simplePaginate(10);
+        $orders = Order::join("users", "users.id", "orders.employee_id")->join("tables", "tables.id", "orders.table_id")->get(["orders.id", "users.name", "orders.order_date", "orders.status", "orders.print_qty", "tables.table_name"]);
 
-            return view("pages.order", compact("orders", "auth", "employees", "tables"));
-        }else{
-            $orders = Order::where("id", "=", $request->search_order)->simplePaginate(10);
-            $orders->appends($request->all());
-
-            return view('pages.order', compact("orders", "auth", "employees", "tables"));
-        }
+        return view("pages.order", compact("orders", "auth", "employees", "tables"));
     }
 
     public function Create(OrderFormRequest $request){

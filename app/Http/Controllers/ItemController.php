@@ -16,16 +16,9 @@ class ItemController extends Controller
         $auth = User::find($authID);
         $categories = Category::get();
 
-        if(empty($request->all())){
-            $items = Item::simplePaginate(10);
+        $items = Item::join("categories", "categories.id", "items.category_id")->get(["items.id", "items.item_name", "items.description", "categories.category_name", "items.unit_price", "items.status", "items.item_image"]);
 
-            return view("pages.item", compact("items", "auth", "categories"));
-        }else{
-            $items = Item::where("item_name", "LIKE", "%" . $request->search_item . "%")->orWhere("status", "LIKE", "%" . $request->search_item . "%")->simplePaginate(10);
-            $items->appends($request->all());
-
-            return view('pages.item', compact("items", "auth", "categories"));
-        }
+        return view("pages.item", compact("items", "auth", "categories"));
     }
 
     public function Create(ItemFormRequest $request){

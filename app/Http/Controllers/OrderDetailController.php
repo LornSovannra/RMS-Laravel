@@ -19,15 +19,19 @@ class OrderDetailController extends Controller
         $items = Item::get();
 
         if(empty($request->all())){
-            $order_details = OrderDetail::simplePaginate(10);
+            $order_details = OrderDetail::paginate(10);
 
             return view("pages.order_detail", compact("order_details", "auth", "orders", "items"));
         }else{
-            $order_details = OrderDetail::where("id", "=", $request->search_order_detail)->simplePaginate(10);
+            $order_details = OrderDetail::where("id", "=", $request->search_order_detail)->paginate(10);
             $order_details->appends($request->all());
 
             return view('pages.order_detail', compact("order_details", "auth", "orders", "items"));
         }
+
+        /* $order_details = OrderDetail::get();
+
+        return view("pages.order_detail", compact("order_details", "auth", "orders", "items")); */
     }
 
     public function Create(OrderDetailFormRequest $request){
