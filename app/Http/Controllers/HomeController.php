@@ -22,8 +22,7 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $items = Item::get();
-        $orders = Order::join("users", "users.id", "orders.employee_id")->join("tables", "tables.id", "orders.table_id")->get(["orders.id", "users.name", "orders.order_date", "orders.status", "orders.print_qty", "tables.table_name"]);
-        $order_details = OrderDetail::join("items", "items.id", "order_details.item_id")->get(["order_details.id", "order_details.order_id", "items.item_name", "order_details.qty_order"]);
+        $item_data = Item::join("categories", "categories.id", "items.category_id")->get(["items.id", "items.item_name", "items.description", "categories.category_name", "items.unit_price", "items.status", "items.item_image"]);
         
         $authID = Auth::id();
         $auth = User::find($authID);
@@ -35,7 +34,7 @@ class HomeController extends Controller
         $num_of_categorie = count(Category::all());
         $num_of_employee = count(User::all());
 
-        return view('welcome', compact("orders", "order_details", "items", "auth", "num_of_order_detail", "num_of_order", "num_of_item", "num_of_table", "num_of_categorie", "num_of_employee"));
+        return view('welcome', compact("item_data", "items", "auth", "num_of_order_detail", "num_of_order", "num_of_item", "num_of_table", "num_of_categorie", "num_of_employee"));
     }
 
     public function ChangePassword(Request $request){

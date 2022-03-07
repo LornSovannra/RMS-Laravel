@@ -65,73 +65,24 @@
             </div>
         </div>
 
-        <div class="row justify-content-between mt-2" style="padding: 0 10px;">
-            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
-                <div class="text-nowrap" style="overflow-y: hidden; margin-top: 20px; padding: 10px; box-shadow: 0px 0px 6px 0px rgba(0, 153, 255, 0.16);">
-                    <h3 style="font-weight: 600; color: #2d6a4f;">Recent Order</h3>
-                    <table class="table table-striped mt-2">
-                        <thead>
-                          <tr style="color: #2d6a4f;">
-                            <th scope="col">ID</th>
-                            <th scope="col">Employee Name</th>
-                            <th scope="col">Order Date</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Print Qty</th>
-                            <th scope="col">Table Name</th>
-                          </tr>
-                        </thead>    
-                        <tbody>
-                            @foreach ($orders as $order)    
-                                <tr>
-                                  <th scope="row" class="align-middle">{{ $order->id }}</th>
-                                  <td class="align-middle">{{ $order->name }}</td>
-                                  <td class="align-middle">{{ $order->order_date }}</td>
-        
-                                  @if ($order->status == "Approved" )
-                                    <td class="align-middle"><span style="color: whitesmoke; background: #52b788; padding: 2px 7px; border-radius: 20px;">{{ $order->status }}</span></td>
-                                  @elseif ($order->status == "Refunded")
-                                    <td class="align-middle"><span style="color: whitesmoke; background: #ffc600; padding: 2px 7px; border-radius: 20px;">{{ $order->status }}</span></td>
-                                  @else
-                                    <td class="align-middle"><span style="color: whitesmoke; background: #adb5bd; padding: 2px 7px; border-radius: 20px;">{{ $order->status }}</span></td>
-                                  @endif
-                                  
-                                  <td class="align-middle">{{ $order->print_qty }}</td>
-                                  <td class="align-middle">{{ $order->table_name }}</td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                      </table>
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                <div class="text-nowrap" style="overflow-y: hidden; margin-top: 20px; padding: 10px; box-shadow: 0px 0px 6px 0px rgba(0, 153, 255, 0.16);">
-                    <h3 style="font-weight: 600; color: #2d6a4f;">Recent Order Detail</h3>
-                    <table class="table table-striped mt-2">
-                        <thead>
-                          <tr style="color: #2d6a4f;">
-                            <th scope="col">ID</th>
-                            <th scope="col">Order ID</th>
-                            <th scope="col">Item Name</th>
-                            <th scope="col">Qty Order</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($order_details as $order_detail)    
-                                <tr>
-                                  <th scope="row" class="align-middle">{{ $order_detail->id }}</th>
-                                  <td class="align-middle">{{ $order_detail->order_id }}</td>
-                                  <td class="align-middle">{{ $order_detail->item_name }}</td>
-                                  <td class="align-middle">{{ $order_detail->qty_order }}</td>
-                                  {{-- Edit Modal --}}
-                                  @include('modals.order_detail.edit_order_detail')
-                                </tr>
-                                {{-- Delete Modal --}}
-                                @include('modals.order_detail.delete_order_detail')
-                            @endforeach
-                        </tbody>
-                      </table>
-                </div>
+        <div style="margin: 20px 0;">
+            <h1>List of Items</h1>
+        </div>
+        <div style="overflow-y: scroll; height: 60vh; border-radius: 10px; box-shadow: 0px 0px 6px 0px rgba(0, 153, 255, 0.16);">
+            <div class="row" style="gap: 10px; margin: 5px;">
+                @foreach ($item_data as $item)    
+                    <div style="width: 18rem; border-radius: 10px; box-shadow: 0px 0px 6px 0px rgba(0, 153, 255, 0.16);" class="card col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-4" >
+                        <div style="height: 250px; align-items: center; display: flex; justify-content: center;">
+                            <img src="item_images/{{ $item->item_image }}" class="card-img-top" alt="{{ $item->item_image }}">
+                        </div>
+                        <div class="card-body" style="margin: 10px 0 0 0; border-top: 1px solid gray">
+                            <p class="card-text" style="font-weight: bold;">Name: {{ $item->item_name }}</p>
+                            <p class="card-text">Price: {{ $item->unit_price }}</p>
+                            <p class="card-text">Category: {{ $item->category_name }}</p>
+                            <p class="card-text">Status: {{ $item->status }}</p>
+                        </div>
+                    </div>
+                @endforeach
             </div>
         </div>
     </div>

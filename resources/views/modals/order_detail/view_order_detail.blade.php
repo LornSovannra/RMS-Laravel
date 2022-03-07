@@ -28,7 +28,7 @@
                     </div>
 
                     <div class="row mb-3">
-                        <label for="item_id" class="col-md-4 col-form-label text-md-end">{{ __('Item_ID') }}</label>
+                        <label for="item_id" class="col-md-4 col-form-label text-md-end">{{ __('Item ID') }}</label>
 
                         <div class="col-md-6">
                             <input disabled id="view_item_id" type="text" class="form-control">
