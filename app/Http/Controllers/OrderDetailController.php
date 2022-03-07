@@ -18,30 +18,25 @@ class OrderDetailController extends Controller
         $orders = Order::get();
         $items = Item::get();
 
-        if(empty($request->all())){
-            $order_details = OrderDetail::paginate(10);
+        $order_details = OrderDetail::join("items", "items.id", "order_details.item_id")->get(["order_details.id", "order_details.order_id", "items.item_name", "order_details.qty_order"]);
 
-            return view("pages.order_detail", compact("order_details", "auth", "orders", "items"));
-        }else{
-            $order_details = OrderDetail::where("id", "=", $request->search_order_detail)->paginate(10);
-            $order_details->appends($request->all());
-
-            return view('pages.order_detail', compact("order_details", "auth", "orders", "items"));
-        }
-
-        /* $order_details = OrderDetail::get();
-
-        return view("pages.order_detail", compact("order_details", "auth", "orders", "items")); */
+        return view("pages.order_detail", compact("order_details", "auth", "orders", "items"));
     }
 
     public function Create(OrderDetailFormRequest $request){
-        $order_detail = new OrderDetail();
-        $order_detail->order_id = $request->order_id;
-        $order_detail->item_id = $request->item_id;
-        $order_detail->qty_order = $request->qty_order;
-        $order_detail->save();
-
-        return redirect("/order-detail")->with("order_detail_created", "Order detail created!");
+        $check_order_detail = OrderDetail::where(["order_id" => $request->order_id, "item_id" => $request->item_id])->get();
+        
+        if(count($check_order_detail) == 0){
+            $order_detail = new OrderDetail();
+            $order_detail->order_id = $request->order_id;
+            $order_detail->item_id = $request->item_id;
+            $order_detail->qty_order = $request->qty_order;
+            $order_detail->save();
+    
+            return redirect("/order-detail")->with("order_detail_created", "Order detail created!");
+        }else{
+            return redirect("/order-detail")->with("order_detail_invalid", "Invalid Information, Please check your information again!");
+        }
     }
 
     public function View($id){
@@ -63,13 +58,19 @@ class OrderDetailController extends Controller
     }
 
     public function Update(OrderDetailFormRequest $req){
-        $order_detail = OrderDetail::findOrFail($req->id);
-        $order_detail -> order_id = $req -> order_id;
-        $order_detail -> item_id = $req -> item_id;
-        $order_detail -> qty_order = $req -> qty_order;
-        $order_detail -> save();
+        $check_order_detail = OrderDetail::where(["order_id" => $req->order_id, "item_id" => $req->item_id])->get();
+        
+        if(count($check_order_detail) == 0){
+            $order_detail = OrderDetail::findOrFail($req->id);
+            $order_detail -> order_id = $req -> order_id;
+            $order_detail -> item_id = $req -> item_id;
+            $order_detail -> qty_order = $req -> qty_order;
+            $order_detail -> save();
 
-        return redirect("/order-detail")->with("order_detail_updated", "Order detail updated");
+            return redirect("/order-detail")->with("order_detail_updated", "Order detail updated");
+        }else{
+            return redirect("/order-detail")->with("order_detail_invalid", "Invalid Information, Please check your information again!");
+        }
     }
 
     public function Remove($id){

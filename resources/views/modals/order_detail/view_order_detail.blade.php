@@ -12,7 +12,7 @@
                 <div class="card-body">
 
                     <div class="row mb-3">
-                        <label for="view_id" class="col-md-4 col-form-label text-md-end">{{ __('Order Detail ID') }}</label>
+                        <label for="view_id" class="col-md-4 col-form-label text-md-end">{{ __('ID') }}</label>
 
                         <div class="col-md-6">
                             <input disabled id="view_id" type="text" class="form-control">

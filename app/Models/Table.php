@@ -10,9 +10,4 @@ class Table extends Model
     use HasFactory;
 
     public $timestamps = false;
-
-    public function orders()
-    {
-        return $this->hasMany(Order::class, "table_id");
-    }
 }

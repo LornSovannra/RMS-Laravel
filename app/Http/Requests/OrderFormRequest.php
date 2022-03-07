@@ -14,7 +14,6 @@ class OrderFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'employee_id' => ['required'],
             'status' => ['required'],
             'print_qty' => ['required'],
             'table_id' => ['required'],

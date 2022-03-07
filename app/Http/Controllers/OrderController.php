@@ -24,7 +24,7 @@ class OrderController extends Controller
 
     public function Create(OrderFormRequest $request){
         $order = new Order();
-        $order->employee_id = $request->employee_id;
+        $order->employee_id = Auth::id();
         $order->order_date = $request->order_date;
         $order->status = $request->status;
         $order->print_qty = $request->print_qty;

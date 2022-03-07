@@ -21,12 +21,9 @@ class HomeController extends Controller
 
     public function index(Request $request)
     {
-        $orders = Order::paginate(10, ['*'], 'orders');
         $items = Item::get();
-
-        //Fix here
-        $order_details = OrderDetail::paginate(10, ['*'], 'order_details');
-        //End
+        $orders = Order::join("users", "users.id", "orders.employee_id")->join("tables", "tables.id", "orders.table_id")->get(["orders.id", "users.name", "orders.order_date", "orders.status", "orders.print_qty", "tables.table_name"]);
+        $order_details = OrderDetail::join("items", "items.id", "order_details.item_id")->get(["order_details.id", "order_details.order_id", "items.item_name", "order_details.qty_order"]);
         
         $authID = Auth::id();
         $auth = User::find($authID);

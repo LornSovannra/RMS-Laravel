@@ -15,6 +15,21 @@
         {{-- Font Awesome --}}
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" >
 
+        {{-- Data Table Styles --}}
+        <link rel="stylesheet" href="//cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
+
+        <style>
+          .dataTables_wrapper .dataTables_paginate .paginate_button{
+            padding: 0px !important;
+            margin: 0px !important;
+          }
+
+          div.dataTables_wrapper div.dataTables_length select{
+            width: 50%;
+          }
+        </style>
+        {{-- End Data Table Styles --}}
     </head>
     <body style="background: whitesmoke;">
         @include('layouts.header')
@@ -23,5 +38,15 @@
           @include('layouts.navigation')
           @include('page_modules.dashboard')
         </main>
+
+        {{-- Data Table Script --}}
+        <script>
+            $(document).ready( function () {
+                $('#myDataTable').DataTable();
+            } );
+        </script>
+        {{-- Data Table Script --}}
+        <script src="//cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
     </body>
 </html>

@@ -15,11 +15,6 @@ class CreateOrdersTable extends Migration
             $table->string("status");
             $table->integer("print_qty");
             $table->unsignedBigInteger("table_id")->nullable();
-
-            /* $table->foreign("employee_id")->references("id")
-                -> on("users") -> cascadeOnDelete("cascade"); */
-            /* $table->foreign("table_id")->references("id")
-                -> on("tables") -> cascadeOnDelete("cascade"); */
         });
     }
 

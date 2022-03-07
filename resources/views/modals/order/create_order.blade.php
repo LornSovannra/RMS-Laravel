@@ -18,12 +18,7 @@
                             <label for="employee_id" class="col-md-4 col-form-label text-md-end">{{ __('Employee ID') }}</label>
 
                             <div class="col-md-6">
-                                <select id="employee_id" class="form-select @error('employee_id') is-invalid @enderror" aria-label="Default select example" name="employee_id" value="{{ old('employee_id') }}" required autocomplete="employee_id" autofocus>
-                                    <option selected disabled>Select Employee ID</option>
-                                    @foreach ($employees as $employee)
-                                        <option value="{{ $employee->id }}">{{ $employee->name }}</option>
-                                    @endforeach
-                                </select>
+                                <input disabled id="employee_id" type="text" class="form-control @error('employee_id') is-invalid @enderror" name="employee_id" value="{{ old('employee_id') }}" autocomplete="employee_id" autofocus>
 
                                 @error('employee_id')
                                     <span class="invalid-feedback" role="alert">

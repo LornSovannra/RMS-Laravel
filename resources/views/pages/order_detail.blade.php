@@ -16,7 +16,21 @@
         {{-- Font Awesome --}}
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" >
 
-        {{-- <link rel="stylesheet" href="//cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css"> --}}
+        {{-- Data Table Styles --}}
+        <link rel="stylesheet" href="//cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
+
+        <style>
+          .dataTables_wrapper .dataTables_paginate .paginate_button{
+            padding: 0px !important;
+            margin: 0px !important;
+          }
+
+          div.dataTables_wrapper div.dataTables_length select{
+            width: 50%;
+          }
+        </style>
+        {{-- End Data Table Styles --}}
     </head>
     <body style="background: whitesmoke;">
         @include('layouts.header')
@@ -41,7 +55,7 @@
                   $("#view_id").val(res.order_detail.id)
                   $("#view_order_id").val(res.order_detail.order_id)
                   $("#view_item_id").val(res.order_detail.item_id)
-                  $("#view_qty_order").val(res.order_detail.QtyOrder)
+                  $("#view_qty_order").val(res.order_detail.qty_order)
                 }
               })
             })
@@ -57,7 +71,7 @@
                 success: function(res){
                   $("#order_id").val(res.order_detail.order_id)
                   $("#item_id").val(res.order_detail.item_id)
-                  $("#qty_order").val(res.order_detail.QtyOrder)
+                  $("#qty_order").val(res.order_detail.qty_order)
                   $("#id").val(res.order_detail.id)
                 }
               })
@@ -76,18 +90,14 @@
                 }
               })
             })
-          })
 
-          /* $(document).ready( function () {
+            /* Data Table Script */
             $('#myDataTable').DataTable();
-        } ); */
+          })
       </script>
 
-      {{-- <script src="//cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script> --}}
-      {{-- <script>
-        $(document).ready( function () {
-            $('#myDataTable').DataTable();
-        } );
-      </script> --}}
+      {{-- Data Table Script --}}
+      <script src="//cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+      <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
     </body>
 </html>

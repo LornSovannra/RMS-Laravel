@@ -73,18 +73,18 @@
                         <thead>
                           <tr style="color: #2d6a4f;">
                             <th scope="col">ID</th>
-                            <th scope="col">Employee ID</th>
+                            <th scope="col">Employee Name</th>
                             <th scope="col">Order Date</th>
                             <th scope="col">Status</th>
                             <th scope="col">Print Qty</th>
-                            <th scope="col">Table ID</th>
+                            <th scope="col">Table Name</th>
                           </tr>
                         </thead>    
                         <tbody>
                             @foreach ($orders as $order)    
                                 <tr>
                                   <th scope="row" class="align-middle">{{ $order->id }}</th>
-                                  <td class="align-middle">{{ $order->employee_id }}</td>
+                                  <td class="align-middle">{{ $order->name }}</td>
                                   <td class="align-middle">{{ $order->order_date }}</td>
         
                                   @if ($order->status == "Approved" )
@@ -96,12 +96,11 @@
                                   @endif
                                   
                                   <td class="align-middle">{{ $order->print_qty }}</td>
-                                  <td class="align-middle">{{ $order->table_id }}</td>
+                                  <td class="align-middle">{{ $order->table_name }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
                       </table>
-                      {{ $orders->appends(["order_details" => $order_details->currentPage()])->links() }}
                 </div>
             </div>
 
@@ -113,7 +112,7 @@
                           <tr style="color: #2d6a4f;">
                             <th scope="col">ID</th>
                             <th scope="col">Order ID</th>
-                            <th scope="col">Item ID</th>
+                            <th scope="col">Item Name</th>
                             <th scope="col">Qty Order</th>
                           </tr>
                         </thead>
@@ -122,7 +121,7 @@
                                 <tr>
                                   <th scope="row" class="align-middle">{{ $order_detail->id }}</th>
                                   <td class="align-middle">{{ $order_detail->order_id }}</td>
-                                  <td class="align-middle">{{ $order_detail->item_id }}</td>
+                                  <td class="align-middle">{{ $order_detail->item_name }}</td>
                                   <td class="align-middle">{{ $order_detail->qty_order }}</td>
                                   {{-- Edit Modal --}}
                                   @include('modals.order_detail.edit_order_detail')
@@ -132,7 +131,6 @@
                             @endforeach
                         </tbody>
                       </table>
-                      {{ $order_details->appends(["orders" => $orders->currentPage()])->links() }}
                 </div>
             </div>
         </div>

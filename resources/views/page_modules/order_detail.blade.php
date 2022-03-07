@@ -18,6 +18,12 @@
             </div>
         @endif
 
+        @if(session()->has('order_detail_invalid'))
+            <div style="border-radius: 10px" class="alert alert-danger" role="alert">
+                {{ session()->get('order_detail_invalid') }}
+            </div>
+        @endif
+
         <div style="display: flex; align-items: center; justify-content: space-between;">
             <h1>Order Detail</h1>
 
@@ -26,14 +32,6 @@
                 Create New Order Detail
             </button>
         </div>
-
-        <form action="{{ route("search_order_detail") }}" method="get">
-            @csrf
-            <div style="display: flex; align-items: center; margin-top: 40px; padding: 5px 10px; border-radius: 10px; border: 1px solid green; border-radius: 10px;">
-                <i class="fas fa-search" style="margin-right: 10px;"></i>
-                <input name="search_order_detail" type="text" placeholder="Search Order Detail" style="width: 100%; border: none; outline: none;">
-            </div>
-        </form>
     
         <div class="text-nowrap" style="overflow-y: hidden; margin-top: 20px;">
             <table class="table table-striped" id="myDataTable">
@@ -41,7 +39,7 @@
                   <tr style="color: #2d6a4f;">
                     <th scope="col">ID</th>
                     <th scope="col">Order ID</th>
-                    <th scope="col">Item ID</th>
+                    <th scope="col">Item Name</th>
                     <th scope="col">Qty Order</th>
                     <th scope="col">Actions</th>
                   </tr>
@@ -49,9 +47,9 @@
                 <tbody>
                     @foreach ($order_details as $order_detail)    
                         <tr>
-                          <th scope="row" class="align-middle">{{ $order_detail->id }}</th>
+                          <td class="align-middle">{{ $order_detail->id }}</td>
                           <td class="align-middle">{{ $order_detail->order_id }}</td>
-                          <td class="align-middle">{{ $order_detail->item_id }}</td>
+                          <td class="align-middle">{{ $order_detail->item_name }}</td>
                           <td class="align-middle">{{ $order_detail->qty_order }}</td>
                           <td class="align-middle">
                             <div class="d-flex gap-2">
@@ -68,7 +66,6 @@
                     @endforeach
                 </tbody>
               </table>
-              {{ $order_details->links() }}
         </div>
     </div>
     <div>
