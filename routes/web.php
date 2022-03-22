@@ -7,6 +7,7 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderDetailController;
 use App\Http\Controllers\TableController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Auth::routes();
@@ -75,6 +76,7 @@ Route::get("/search-category", [CategoryController::class, "CategoryHome"]) -> n
 Route::get("/employee", [EmployeeController::class, "EmployeeHome"]) -> name("employee_home");
 Route::get("/view-employee/{id}", [EmployeeController::class, "View"]) -> name("view_employee");
 Route::post("/employee", [EmployeeController::class, "Create"]) -> name("create_employee");
+Route::post("/user", [UserController::class, "Create"]) -> name("create_employee_without_admin");
 Route::get("/edit-employee/{id}", [EmployeeController::class, "Edit"]) -> name("edit_employee");
 Route::post("/update-employee", [EmployeeController::class, "Update"]) -> name("update_employee");
 Route::get("/remove-employee/{id}", [EmployeeController::class, "Remove"]) -> name("remove_employee");
